@@ -1,0 +1,154 @@
+<%-- 
+    Document   : Manage_Alumni
+    Created on : 29 Aug, 2020, 7:08:31 PM
+    Author     : AMAN DEEP
+--%>
+<%
+if(session.getAttribute("id")==null)
+{
+    response.sendRedirect("../login.jsp");
+}
+else
+{
+%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+        <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
+        <style>
+            body{
+                grid-template-rows: 10vh 90vh auto;
+            }
+            .form-outer{
+                grid-template-rows: 20% 65% 15%;
+            }
+            .grid-outer{
+                padding: 3% 0 17.5% 0;
+            }
+            .grid-container{
+                padding: .5% 2% 1% 2%;
+            }
+            .grid-item input[type="text"]{
+                text-transform: capitalize;
+            }
+            .grid-item input[type="file"]{
+                border:none;
+                font-size: 1.8rem;
+            }
+            .btn1{
+                padding: 5.5% 0 4% 0;
+            }
+            ::placeholder{
+                text-transform: none;
+                font-size: 1.8rem;
+            }
+            .grid-container1{
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-column-gap: 2%;
+                margin: 0 3% 1% 3%;
+                padding: 0 2% 2.5% 2%;
+                background-color: white;
+                box-shadow: 0 10px 15px 5px grey;
+            }
+            .grid-item2{
+                display: grid;
+                place-items:center;
+                background-color: white;
+                margin-top: 8%;
+                box-shadow: 0 10px 15px 0px grey;
+            }
+            .grid-item2:hover{
+                box-shadow: 0 20px 30px 10px grey;
+            }
+            .grid-item2 img{
+                height: 30em;
+                width: 30em;
+                margin: 4% 0 2% 0;
+            }
+            @media screen and (max-width: 650px){
+                .grid-container1{
+                    grid-template-columns: auto !important;
+                }
+            }
+            @media screen and (max-width: 1050px){
+                .grid-container1{
+                    grid-template-columns: auto auto;
+                    padding: 0 3% 0 3%;
+                    grid-column-gap: 3%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <%@include file="admin_navbar.jsp"%> 
+        <div class="form-outer">
+            <h1>ADD &nbsp;ALUMNI</h1>
+            <form action="../AlumniUpload" method="post" enctype="multipart/form-data" class="grid-outer">
+                <div class="grid-container">
+                    <div class="grid-item">Name:</div>
+                    <div class="grid-item">
+                        <input type="text" name="name" required=""/>
+                    </div>
+                    <div class="grid-item">Branch:</div>  
+                    <div class="grid-item">
+                        <select name="branch" required="">
+                            <option value="">Select Branch</option>
+                            <option value="CE">CE</option>
+                            <option value="EL">EL</option>
+                            <option value="EE">EE</option>
+                            <option value="IT">IT</option>
+                            <option value="CSE">CSE</option>
+                            <option value="ME">ME</option>
+                        </select>
+                    </div>  
+                    <div class="grid-item">Batch:</div>  
+                    <div class="grid-item">
+                        <input type="number" name="batch" placeholder="Passout Year (eg. 2020)" required=""/>
+                    </div>  
+                    <div class="grid-item">Alumni Pic:</div>  
+                    <div class="grid-item">
+                        <input name="imgFile" type="file" required=""/>
+                    </div>
+                    <div class="grid-item btn1"><input type="submit" value="Add" /></div>
+                </div>
+            </form>
+            <h1>MANAGE ALUMNI<span class="glyphicon glyphicon-arrow-down"></span></h1>
+        </div>
+        
+        <div class="table-outer1">
+            <div class="grid-outer1">
+                <div class="grid-container1">
+                    <%
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
+                        PreparedStatement ps=con.prepareStatement("select * from alumni order by batch desc");
+                        ResultSet rs=ps.executeQuery();
+                        while(rs.next())
+                        {
+                    %>
+                    <div class="grid-item2">
+                        <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(5)%>" />
+                        <h2><%=rs.getString(2)%></h2>
+                        <h3><%=rs.getString(3)%>&nbsp; &nbsp;Batch:&nbsp; <%=rs.getInt(4)%></h3>
+                        <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(5)%>">DELETE</a></h3>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+<% } %>

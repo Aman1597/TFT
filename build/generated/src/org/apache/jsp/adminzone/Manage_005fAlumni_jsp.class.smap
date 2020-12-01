@@ -1,0 +1,22 @@
+SMAP
+Manage_005fAlumni_jsp.java
+JSP
+*S JSP
+*F
++ 0 Manage_Alumni.jsp
+adminzone/Manage_Alumni.jsp
++ 1 admin_navbar.jsp
+adminzone/admin_navbar.jsp
+*L
+5,48:53
+1#1,66:101
+52#0,39:166
+91,7:206
+97,3:213
+100:216,3
+101:219
+102,3:220,3
+105,4:229
+109:233,3
+110,6:236
+*E

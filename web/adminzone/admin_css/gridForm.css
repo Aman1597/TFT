@@ -1,0 +1,206 @@
+    html {
+        padding: 0;
+    }
+
+    body{
+        background-color: whitesmoke;
+        margin: 0;
+        width: inherit;
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 10% 90%;
+    }
+    
+    .nav-item{
+        color:aqua;
+        font-size:1.5em;
+        margin-right:2em;
+    }
+
+    .navbar{
+        background:rgba(8, 36, 69, 0.98);
+        margin-bottom: 0.3%;//inherit;
+    }
+    
+    
+    .form-outer{
+        display: grid;
+        justify-content: center;
+        grid-template-rows: 20% 80%;
+        grid-template-columns: 32%;
+        font-family: serif;
+    }
+    
+    .table-outer1{
+        display: grid;
+        justify-content: center;
+        grid-template-rows: 100%;
+        grid-template-columns: 100%;
+        font-family: serif;
+    }
+    .table{
+        width:99.4%;
+        margin: 0 0.3% 0 0.3%;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 1.8rem;
+        font-family: serif;
+    }
+    .table tbody tr td{
+        vertical-align: middle;
+    }
+    .table tr:nth-child(even){
+        background-color: rgba(255,255,255,.05);
+    }
+    
+    .grid-outer{
+        display: grid;
+        grid-template-columns: 100%;
+        padding: 3% 0 38% 0;
+    }
+    h1{
+        display: grid;
+        place-items: center;
+    }
+    .grid-container{
+        display: grid;
+        grid-template-columns: 41% 55% ;
+        background-color: #007bff;//#1DA1F2;
+        padding: 2% 2% 2% 2%;
+        border: 5px solid purple;
+        grid-gap: 2% 4%;
+        color: white;
+        box-shadow: -10px 10px 15px 5px grey;
+        text-shadow: 0px 10px 15px rgba(0,0,0,1) , 1px -1px 0 black , 1px 1px 0 black , -1px -1px 0 black , -1px 1px 0 black;
+    }
+    .grid-item{
+        //border: 1px solid white;
+        font-size: 2rem;
+        text-transform: uppercase;
+        display: grid;
+        place-items: center;
+    }
+    .grid-item:nth-child(even){
+        padding: 0;
+        place-items: center start;
+    }
+    
+    .grid-item input,select,textarea{
+        //height: 94%;
+        background: transparent;
+        color: white;
+        width: 90%;//97%;
+        border: none;
+        border-bottom: 2px solid purple;
+        border-radius: 2px 2px 0 0;
+        text-transform: uppercase;
+        font-size: inherit;
+        font-weight: 100;
+        font-family: inherit;
+    }
+    .grid-item select option{
+        background: #007bff;//#1DA1F2;
+        outline: none;
+    }
+    
+    .grid-item input:focus,select:focus,textarea:focus{
+        outline: none;
+        border-bottom-color: white;
+        transition: border-bottom-color 2s linear;
+    }
+    ::placeholder{
+        color: yellow;//inherit;
+    }
+    .grid-item input:hover,select:hover,textarea:hover{
+        box-shadow: 1px 1px 20px 5px white;
+    }
+    .btn1{
+        grid-column: 1 / span 2 ;
+    }
+    .btn1 input
+    {
+        font-size: inherit;
+        background-color: inherit;
+        border: none;// 2px solid purple;
+        border-radius: 50%; 
+        color: white;
+        cursor: pointer;
+        box-shadow: -2px 2px 30px 0px white, 2px -2px 30px 0px white;//rgba(0,0,0,1);
+        //width:17%;
+        font-family: inherit;
+        text-shadow: 0px 5px 10px rgba(0,0,0,1) , 1px -1px 0 black , 1px 1px 0 black , -1px -1px 0 black , -1px 1px 0 black;
+    }
+    .btn1 input:hover{
+        box-shadow: -2px 2px 30px 5px white, 2px -2px 30px 5px white;
+    }
+    
+    
+    // Didplay table using grid layout
+    
+    
+    .grid-outer1{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .grid-container1{
+        display: grid;
+        grid-template-columns: 65% 21% 14%;
+        padding: 0 0.3% 0 0.3%;
+        background-color: white;
+    }
+    .grid-item1{
+        font-size: 1.8rem;
+        height: 8vh;
+        display: grid;
+        place-items: center;
+        border-bottom: 1px solid black;
+    }
+    .grid-item1:nth-child(6n+0) , .grid-item1:nth-child(6n-1) , .grid-item1:nth-child(6n-2){
+        background-color: whitesmoke;//white;
+    }
+    .grid-item1:nth-child(3n+4){
+        place-items: center start;
+        padding: 0 3vw 0 2vw; 
+    }
+    .grid-item1:nth-child(3n){
+        padding: 0 3vw 0 3vw;
+    }
+    .rh{
+        color: white;
+        background:rgba(8, 36, 69, 0.98);
+    }
+
+    
+    
+    
+    // media Query
+    
+    // NOTE: This blank media query is necessary. Don't REMOVE it.
+    @media screen {}
+    @media screen and (max-width: 650px) {
+/*        body .form-outer, body .table-outer1 {
+            grid-template-columns: 100%;
+        }*/
+        .form-outer{
+            grid-template-columns: 100% !important;
+        }
+        .grid-item1{
+            font-size: 1.5rem !important;
+        }
+    }
+    @media screen and (max-width: 1050px) {
+        .form-outer {
+            grid-template-columns: 60%;
+        }
+        .grid-item1{
+            font-size: 1.7rem;
+        }
+    }
+    
+
+    
+    
+    
+    
+    

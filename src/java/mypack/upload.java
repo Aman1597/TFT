@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -86,22 +87,30 @@ public class upload extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     try {
     String subject = request.getParameter("subject");
-    String title = request.getParameter("title");
+    String title = request.getParameter("title").toUpperCase();
     String description = request.getParameter("description");
     Part p = request.getPart("myfile");
     String filename = p.getSubmittedFileName();
-    InputStream is = p.getInputStream();
-    String s = getRandomString();
-    File f = new File(request.getRealPath("/notes"), s+filename);
-    Files.copy(is, f.toPath());
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb","root","");
-    PreparedStatement ps = con.prepareStatement("insert into notes(subject,filename,title,description,uploaddate) values('"+subject+"','"+s+filename+"','"+title+"','"+description+"',curdate())");
+    PreparedStatement pss = con.prepareStatement("select * from notes where filename='"+filename+"'");
+    ResultSet rss= pss.executeQuery();
+    if(rss.next())
+    {
+        response.getWriter().print("<script>alert('A file with same filename already exists');window.location.href='adminzone/Manage_Notes.jsp';</script>");
+    }
+    else
+    {
+    InputStream is = p.getInputStream();
+    //String s = getRandomString();
+    File f = new File(request.getRealPath("/notes"), filename);
+    Files.copy(is, f.toPath());
+    PreparedStatement ps = con.prepareStatement("insert into notes(subject,filename,title,description,uploaddate) values('"+subject+"','"+filename+"','"+title+"','"+description+"',curdate())");
     ps.executeUpdate();
-    response.getWriter().print("<script>alert('Upload successfull');window.location.href='adminzone/uploadform.jsp';</script>");
+    response.getWriter().print("<script>alert('Upload Successful');window.location.href='adminzone/Manage_Notes.jsp';</script>");
+    }
     } catch (Exception e) {
-                response.getWriter().print("<script>alert('Not Uploaded');window.location.href='adminzone/uploadform.jsp';</script>");
-
+                response.getWriter().print("<script>alert('Not Uploaded');window.location.href='adminzone/Manage_Notes.jsp';</script>");
      }
     }
 

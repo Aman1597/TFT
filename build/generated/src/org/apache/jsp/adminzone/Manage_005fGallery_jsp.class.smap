@@ -1,0 +1,20 @@
+SMAP
+Manage_005fGallery_jsp.java
+JSP
+*S JSP
+*F
++ 0 Manage_Gallery.jsp
+adminzone/Manage_Gallery.jsp
++ 1 admin_navbar.jsp
+adminzone/admin_navbar.jsp
+*L
+5,83:53
+1#1,66:136
+87#0,19:201
+106,7:221
+112,2:228
+114,2:230,3
+116,2:236
+118:238,3
+119,6:241
+*E

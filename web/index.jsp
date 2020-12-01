@@ -4,7 +4,12 @@
     Author     : Aman Deep
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,84 +18,48 @@
 <meta http-equiv="X-UA-Compatible" content="IE-edge">
 <title>TFT</title>
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
 <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/front1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
+<link href="Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
+<link href="Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+<script src="Bootstrap/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+<script src="Bootstrap/js/popper.min.js" type="text/javascript"></script>
+<script src="Bootstrap/js/bootstrap-v4.2.1.min.js" type="text/javascript"></script>
+<link href="Bootstrap/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" href="css/front1.css">
 </head>
 <body>
-    
-    <div class="row" style="margin:3em 0 3em 0">
- <div class="col-sm-2 ans">
-    <img src="image/logo.jpg">
-    </div>
-     <div class="col-sm-10 ans">
-         <div class="capt"><h1>Teach For Technocrats</h1></div>
-     </div>
-    </div>
-<nav class="navbar navbar-expand-md navbar-dark sticky-top">  
-<div class="container-fluid">  
-<a class="navbar-brand" href="#"> <i class="fa fa-Heart "></i></a>  
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">  
-<span class="navbar-toggler-icon"></span></button>  
-
-<div class="collapse navbar-collapse" id="mynav">  
-<ul class="navbar-nav ml-auto">  
-   <li class="nav-item active" >  
-
-   <a class="nav-link" href="#">Home <span class="glyphicon glyphicon-home"></span></a>
-    </li>  
-     <li class="nav-item" >  
-
-    <a  class="nav-link" href="#">Notification</a>  
-    </li>
-    <li class="nav-item " >  
-
-    <a  class="nav-link" href="#">About Us</a>  
-    </li>  
-
-      <li class="nav-item" >  
-<div class="dropdown dept">
-<a  class="nav-link" data-toggle="dropdown">Department<span class="caret"></span></a>  
-      <ul class="dropdown-menu m1">
-      <li><a href="#41">Department 1</a></li>
-       <li><a href="#42">Department 2</a></li>
-          <li><a href="#43">Department 3</a></li>
-        <li><a href="#44">Department 4</a></li>
-            <li><a href="#4">Department 5</a></li>
-      </ul>
-      </div>
-    </li>  
-    <li class="nav-item" >  
-
-    <a  class="nav-link" href="#">Alumni</a>  
-    </li>  
-    <li class="nav-item" >  
-
-    <a  class="nav-link" href="#5">Connect us  <span class="glyphicon glyphicon-earphone	
-                "></span></a>  
-    </li>  
-    <li class="nav-item" >  
-
-    <a  class="nav-link" href="login.jsp">Admin Login</a>  
-    </li>  
-    </ul>  
- </div></div></nav> 
-
-    
-    
-    
-    
+    <%@include file="head.jsp"%>
+    <%@include file="navbar.jsp"%>    
     
 <div class="content">
-    <marquee class="mrq">important notification.........</marquee>
-<div class="carousel slide" data-ride="carousel" data-interval="4000" id="an">
+    <% 
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
+        PreparedStatement ps=con.prepareStatement("select notificationtext from notification order by id desc");
+        ResultSet rs=ps.executeQuery();
+        if(rs.next())
+        {
+    %>
+    <marquee class="mrq"><%=rs.getString(1)%></marquee>
+    <% 
+        }
+        else
+        {
+    %>
+    <marquee class="mrq">Notifications...</marquee>
+    <% 
+        }
+    %>
+<div class="carousel slide" data-ride="carousel" data-interval="5000" id="an">
 
       <ol class="carousel-indicators">
     <li data-target="#an" data-slide-to="0" class="active"></li>
@@ -152,34 +121,50 @@ maybe we should teach the way they learn”</h1><br/>
     
     
     
-  <div class=" deptimg"> 
+    
+      <div class=" deptimg"> 
       <div class="dept" id="4">
-    <h1>Our Department</h1>
+    <h1>Our Departments</h1>
     </div> 
 
 
-<div class="row" style="margin:3em 0 em 0">
- <div class="col-sm-3 anshika">
-    <img src="image/maths.png" alt="mathematics" class="a1">
+<div class="row" >
+     <div class="col-sm-4 anshika"><a href="CE.jsp" style="color: #d9e3d7">
+    <img src="image/civil.png" alt="mathematics" class="a1">
      <div class="text" id="41">
-         <h2><a href="#">Engineering Mathematics</a></h2>
-     </div>
+         <h2>Civil<br/>Engineering</h2>
+     </div></a>
     </div>
-     <div class="col-sm-3 anshika">
+    
+
+     <div class="col-sm-4 anshika"><a href="CSE_IT.jsp" style="color: #d9e3d7">
     <img src="image/c.png" class="a1">
    <div class="text" id="42">
-       <h2><a href="C.jsp">Concept of C programming</a></h2>
-     </div></div>
-     <div class="col-sm-3 anshika" >
+       <h2>CSE/IT</h2>
+   </div></a></div>
+     <div class="col-sm-4 anshika" ><a href="EE.jsp" style="color: #d9e3d7">
     <img src="image/electrical.png"  class="a1">
       <div class="text" id="43">
-    <h2>Electrial</h2>
-     </div></div>
-     <div class="col-sm-3 anshika">
+    <h2>Electrial<br/>Engineering</h2>
+      </div></a></div>
+     <div class="col-sm-4 anshika"><a href="EL.jsp" style="color: #d9e3d7">
+    <img src="image/electronics.png" alt="mathematics" class="a1">
+     <div class="text" id="41">
+         <h2>Electronics<br/>Engineering</h2>
+     </div></a>
+    </div>
+     <div class="col-sm-4 anshika"><a href="ME.jsp" style="color: #d9e3d7">
     <img src="image/mechanics.png"  class="a1">
   <div class="text" id="44">
-    <h2>Mechanics</h2>
-     </div></div>
+    <h2>Mechanical<br/>Engineering</h2>
+  </div></a></div>
+    
+     <div class="col-sm-4 anshika"><a href="AS.jsp" style="color: #d9e3d7">
+    <img src="image/maths.png" alt="mathematics" class="a1">
+     <div class="text" id="41">
+         <h2>Applied<br/>Sciences</h2>
+     </div></a>
+    </div>
 </div>
 
     </div>
@@ -194,30 +179,7 @@ maybe we should teach the way they learn”</h1><br/>
     
     
     
-    
-    	   <div class="top" id="5" >
-		<div id="meee">
-            <div  class="c1"><a name="whatever"><br />Get In Touch</a></div>
-		<hr style="border-top-color: aliceblue" align="left" width="10%" margin-left="100px"/>
-	<br />
-		<div class="c2">Shivam _____
-			<br />
-			Stuent Representative,TFT
-			<br />
-			Contact No: xxxxxxxxxx
-			<br />
-		</div>
-		</div>
-		<div class="break"></div>
-		<div class="follow"><br />Follow  Us</div>
-		<hr style="border-top-color: aliceblue"align="left"width="10%">
-			<div class="try">
-		<a href="https://www.facebook.com" class="fa fa-facebook"></a>
-		<a href="#" class="fa fa-instagram"></a>
-		<a href="https://twitter.com/login" class="fa fa-twitter"></a>
-		<a href="https://www.youtube.com/" class="fa fa-youtube"></a><br />
-			</div>
-    </div>
+    <%@include file="foot.jsp"%>
     
     </div> 
     
@@ -226,7 +188,4 @@ maybe we should teach the way they learn”</h1><br/>
     
    
 </body>
-
-
-
 </html>

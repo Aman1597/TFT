@@ -6,7 +6,7 @@ if(id.equals("admin"))
     if(password.equals("tft@123"))
     {
         session.setAttribute("id", id);
-        out.println("<script>alert('Upload Here');window.location.href='../adminzone/uploadform.jsp';</script>");
+        out.println("<script>alert('Welcome Admin');window.location.href='../adminzone/Manage_Notification.jsp';</script>");
     }
     else
     {
