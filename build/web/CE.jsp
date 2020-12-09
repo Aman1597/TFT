@@ -50,18 +50,6 @@
         </thead>
     </table>
 
-    <script>
-        function getNotes(sub){
-            $.ajax({
-
-                url: 'ResponseNotes.jsp',
-                type: 'POST',
-                data: { datapost : sub},
-                success: function(result){
-                    $('#gr1').html(result);
-                }
-            });
-        }
-    </script>        
+    <script src="js/fetchNotes.js" rel="javascript" type="text/javascript"></script> 
 </body>
 </html>
