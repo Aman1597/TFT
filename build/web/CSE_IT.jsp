@@ -1,9 +1,5 @@
 
 <%@page import="java.io.File"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.DriverManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,22 +17,8 @@
 <body>
 
     <h1>Computer &nbsp;Science &nbsp;Engineering &nbsp;Department</h1>
-    <div class="select">
-        <select name="subject" onchange="getNotes(this.value)" required="">
-
-            <option value="">Select Subject</option>
-            <%
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-                PreparedStatement ps=con.prepareStatement("select subject from subjects where department = 'CSE_IT'");
-                ResultSet rs=ps.executeQuery();
-                while(rs.next())
-                {
-            %>
-            <option><%=rs.getString(1)%></option>
-            <% }%>
-        </select>
-    </div>
+    <% String dept = "CSE_IT";%>
+    <%@include file="fetchSubjects.jsp" %>
 
     <table id="gr1" border="0" cellspacing="0" class="table table-dark ">
         <thead>
