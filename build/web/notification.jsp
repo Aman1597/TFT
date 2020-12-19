@@ -4,10 +4,7 @@
     Author     : Aman Deep
 --%>
 
-<%@page import="java.util.Date"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.PreparedStatement"%>
+<%@page import="mypack.DbManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,10 +78,9 @@
             </tr>
             <%
                int n=1;
-               Class.forName("com.mysql.jdbc.Driver");
-               Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-               PreparedStatement ps=con.prepareStatement("select * from notification order by id desc");
-               ResultSet rs=ps.executeQuery();
+               DbManager db = new DbManager();
+               String query = "select * from notification order by id desc";
+               ResultSet rs = db.selectQuery(query);
                while(rs.next())
                {  
             %>

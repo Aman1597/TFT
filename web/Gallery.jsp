@@ -4,10 +4,8 @@
     Author     : Aman Deep
 --%>
 
+<%@page import="mypack.DbManager"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -64,34 +62,24 @@
     <div class="row gal1">
 
         <%
-           Class.forName("com.mysql.jdbc.Driver");
-           Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-           PreparedStatement ps=con.prepareStatement("select * from gallery order by uploaddate desc");
-           ResultSet rs=ps.executeQuery();
-           while(rs.next())
-           {
+            DbManager db = new DbManager();
+            String query = "select * from gallery order by uploaddate desc" ;
+            ResultSet rs = db.selectQuery(query);
+           
+            while(rs.next())
+            {
         %>
                     
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <a href="<%=request.getContextPath() + "/GalleryImages/" + rs.getString(2)%>" class="fancybox" rel="ligthbox">
                 <img  src="<%=request.getContextPath() + "/GalleryImages/" + rs.getString(2)%>" class="zoom img-fluid "  alt="">
-
             </a>
         </div>
         
         <% } %>   
-        
-        
-        </div>
 
-
-        
+    </div>
     <%@include file="foot.jsp"%>
-    
-    
-
-        
-        
         
 </div>
 
