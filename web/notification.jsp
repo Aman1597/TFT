@@ -10,9 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
-<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<%@include file="generalComponents/metaTags.jsp" %>
 <title>Notification</title>
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
@@ -66,8 +64,8 @@
 </style>
 </head>
 <body>
-    <%@include file="head.jsp"%>
-    <%@include file="navbar.jsp"%>
+    <%@include file="generalComponents/head.jsp"%>
+    <%@include file="generalComponents/navbar.jsp"%>
     <div class="content">
         <h1 id="h0">Notifications</h1>
         <table class="table" style="text-align: center;" border="0" cellspacing="0">
@@ -94,7 +92,7 @@
                } 
             %>
         </table>
-        <%@include file="foot.jsp"%>
+        <%@include file="generalComponents/foot.jsp"%>
     </div>
     
 </body>

@@ -4,9 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
-<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<%@include file="generalComponents/metaTags.jsp" %>
 <title>TFT</title>
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
@@ -22,8 +20,8 @@
     </head>
     <body>
     
-  <%@include file="head.jsp"%>
-        <%@include file="navbar.jsp"%>
+  <%@include file="generalComponents/head.jsp"%>
+        <%@include file="generalComponents/navbar.jsp"%>
          
           <div class="gal2"><h1>Our Alumni</h1></div>
         
@@ -51,7 +49,7 @@
             <%  } %>
             
         </div>
-          <%@include file="foot.jsp"%>
+          <%@include file="generalComponents/foot.jsp"%>
         
         
     </body>

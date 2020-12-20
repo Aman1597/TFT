@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <%@include file="generalComponents/metaTags.jsp" %>
   <title>Gallery</title>
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -51,8 +51,8 @@
 </script>
 </head>
 <body>
-<%@include file="head.jsp"%> 
-    <%@include file="navbar.jsp"%>
+<%@include file="generalComponents/head.jsp"%> 
+    <%@include file="generalComponents/navbar.jsp"%>
     
     <div class="content">
         
@@ -79,7 +79,7 @@
         <% } %>   
 
     </div>
-    <%@include file="foot.jsp"%>
+    <%@include file="generalComponents/foot.jsp"%>
         
 </div>
 
