@@ -23,7 +23,7 @@ else
         <meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Upload Notes</title>
+        <title>MANAGE NOTES</title>
         <script src="../Bootstrap/js/bootstrap-v4.2.1.min.js" type="text/javascript"></script>
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
@@ -130,13 +130,14 @@ else
                 <option value="ME">Mechanical Engg.</option>
             </select>
         </div>
+        
+        
         <div class="select">
             <select id="sub2" name="subject" onchange="getNotes(this.value)" required="">
-
                 <option value="">Select Subject</option>
-
             </select>
         </div>
+        
         
         <table id="gr1" border="0" cellspacing="0" class="table table-dark ">
             <thead>

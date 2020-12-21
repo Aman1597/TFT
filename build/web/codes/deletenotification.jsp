@@ -1,11 +1,9 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="mypack.DbManager"%>
+
 <%
     int id=Integer.parseInt(request.getParameter("id"));
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb","root","");
-    PreparedStatement ps=con.prepareStatement("delete from notification where id='"+id+"'");
-    ps.executeUpdate();
+    DbManager db = new DbManager();
+    String query = "delete from notification where id='"+id+"'";
+    db.executeNonQuery(query);
     out.print("<script>alert('Notification deleted successfully');window.location.href='../adminzone/Manage_Notification.jsp';</script>");
 %>

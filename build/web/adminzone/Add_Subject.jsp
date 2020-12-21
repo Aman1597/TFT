@@ -18,7 +18,7 @@ else
         <meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ADD SUBJECT</title>
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>

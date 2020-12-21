@@ -3,6 +3,7 @@
     Created on : 29 Aug, 2020, 7:08:31 PM
     Author     : AMAN DEEP
 --%>
+
 <%
 if(session.getAttribute("id")==null)
 {
@@ -12,9 +13,7 @@ else
 {
 %>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="mypack.DbManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +21,7 @@ else
         <meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>MANAGE ALUMNI</title>
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
@@ -131,10 +130,10 @@ else
             <div class="grid-outer1">
                 <div class="grid-container1">
                     <%
-                        Class.forName("com.mysql.jdbc.Driver");
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-                        PreparedStatement ps=con.prepareStatement("select * from alumni order by batch desc");
-                        ResultSet rs=ps.executeQuery();
+                        DbManager db = new DbManager();
+                        String query = "select * from alumni order by batch desc";
+                        ResultSet rs= db.selectQuery(query);
+
                         while(rs.next())
                         {
                     %>

@@ -3,6 +3,7 @@
     Created on : 19 Apr, 2019, 4:23:42 PM
     Author     : Aman Deep
 --%>
+
 <%
 if(session.getAttribute("id")==null)
 {
@@ -12,9 +13,7 @@ else
 {
 %>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
+<%@page import="mypack.DbManager"%>
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +22,7 @@ else
         <meta name="viewport" content="width-device-width , initial-scale=1, user-scalable=yes">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Manage Notification</title>
+        <title>MANAGE NOTIFICATION</title>
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
@@ -78,10 +77,9 @@ else
                     <div class="grid-item1 rh">POSTED DATE</div>
                     <div class="grid-item1 rh">DELETE</div>
                     <%
-                       Class.forName("com.mysql.jdbc.Driver");
-                       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-                       PreparedStatement ps=con.prepareStatement("select * from notification order by id desc");
-                       ResultSet rs=ps.executeQuery();
+                       DbManager db = new DbManager();
+                       String query = "select * from notification order by id desc";
+                       ResultSet rs= db.selectQuery(query);
                        while(rs.next())
                        {
                     %>
