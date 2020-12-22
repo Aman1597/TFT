@@ -76,6 +76,17 @@ else
                 width: 30em;
                 margin: 4% 0 2% 0;
             }
+            .batchNo{
+                margin: 0 3% 1% 3%;
+                //background-color: white;
+            }
+            .batchNo h1{
+/*                width: 20%;
+                height: 8vh; 
+                background: linear-gradient(to right,transparent 50%,green 0) top right/40px 40px no-repeat, white; 
+                color: white;
+                overflow: hidden;*/
+            }
             @media screen and (max-width: 650px){
                 .grid-container1{
                     grid-template-columns: auto !important;
@@ -128,12 +139,20 @@ else
         
         <div class="table-outer1">
             <div class="grid-outer1">
+                <div class="batchNo"><h1></h1></div>
                 <div class="grid-container1">
                     <%
                         DbManager db = new DbManager();
+                        String q = "select distinct batch from alumni order by batch desc";
+                        ResultSet rss = db.selectQuery(q);
+                        
                         String query = "select * from alumni order by batch desc";
                         ResultSet rs= db.selectQuery(query);
 
+                        //while(rss.next())
+                        //{
+                    
+                        //}
                         while(rs.next())
                         {
                     %>

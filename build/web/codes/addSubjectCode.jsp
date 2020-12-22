@@ -14,7 +14,9 @@
     else
     {
         String q = "insert into subjects(department, subject) values ('"+dept+"', '"+sub+"')";
-        db.executeNonQuery(q);
+        if(db.executeNonQuery(q))
+        {
         out.print("<script>alert('Subject added successfully');window.location.href='../adminzone/Add_Subject.jsp';</script>");
+        }
     }
 %>

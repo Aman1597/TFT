@@ -117,6 +117,7 @@ else
                 <div class="grid-container1">
                     <%
                        DbManager db = new DbManager();
+                       
                        String query = "select * from gallery order by uploaddate desc";
                        ResultSet rs= db.selectQuery(query);
                        
