@@ -76,16 +76,30 @@ else
                 width: 30em;
                 margin: 4% 0 2% 0;
             }
-            .batchNo{
-                margin: 0 3% 1% 3%;
-                //background-color: white;
+            .batchNo
+            {
+                margin: 3% 3% 1% 3%;
+                display: grid;
+                grid-template-columns: 10% 0% auto;
+                background-color: white;
+                box-shadow: -5px 5px 13px 0px grey;
             }
-            .batchNo h1{
-/*                width: 20%;
-                height: 8vh; 
-                background: linear-gradient(to right,transparent 50%,green 0) top right/40px 40px no-repeat, white; 
-                color: white;
-                overflow: hidden;*/
+            #div1
+            {
+                height: 6vh; 
+                line-height: 6vh;
+                text-align: center;
+                background-color: grey;// whitesmoke;
+                color: white;// whitesmoke;//grey;
+                font-weight: bold;
+                font-size: 2.4rem;
+            }
+            #triangle{
+                height: 0px;
+                border-top: 3vh solid transparent;
+                border-right: 0px solid transparent;
+                border-bottom: 3vh solid transparent;
+                border-left: 6vh solid grey;// whitesmoke;
             }
             @media screen and (max-width: 650px){
                 .grid-container1{
@@ -139,20 +153,24 @@ else
         
         <div class="table-outer1">
             <div class="grid-outer1">
-                <div class="batchNo"><h1></h1></div>
+                <%
+                    DbManager db = new DbManager();
+                    String q = "select distinct batch from alumni order by batch desc";
+                    ResultSet rss = db.selectQuery(q);
+                    while(rss.next())
+                    {
+                        int batch = rss.getInt(1);
+                    
+                %>
+                <div class="batchNo">
+                    <div id="div1"><%=rss.getInt(1)%></div>
+                    <div id="triangle"></div>                    
+                </div>
                 <div class="grid-container1">
                     <%
-                        DbManager db = new DbManager();
-                        String q = "select distinct batch from alumni order by batch desc";
-                        ResultSet rss = db.selectQuery(q);
-                        
-                        String query = "select * from alumni order by batch desc";
+                        String query = "select * from alumni where batch = '"+batch+"'";
                         ResultSet rs= db.selectQuery(query);
 
-                        //while(rss.next())
-                        //{
-                    
-                        //}
                         while(rs.next())
                         {
                     %>
@@ -164,6 +182,7 @@ else
                     </div>
                     <% } %>
                 </div>
+                <% } %>
             </div>
         </div>
 
