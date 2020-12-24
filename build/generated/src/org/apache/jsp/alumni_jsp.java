@@ -3,10 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import mypack.DbManager;
 import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.Connection;
 
 public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -16,10 +14,11 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(3);
-    _jspx_dependants.add("/head.jsp");
-    _jspx_dependants.add("/navbar.jsp");
-    _jspx_dependants.add("/foot.jsp");
+    _jspx_dependants = new java.util.ArrayList<String>(4);
+    _jspx_dependants.add("/generalComponents/metaTags.jsp");
+    _jspx_dependants.add("/generalComponents/head.jsp");
+    _jspx_dependants.add("/generalComponents/navbar.jsp");
+    _jspx_dependants.add("/generalComponents/foot.jsp");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -55,15 +54,14 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("<head>\n");
-      out.write("<meta charset=\"utf-8\">\n");
       out.write("<meta name=\"viewport\" content=\"width-device-width , initial-scale=1, user-scalable=yes\">\n");
       out.write("<meta http-equiv=\"X-UA-Compatible\" content=\"IE-edge\">\n");
-      out.write("<title>TFT</title>\n");
+      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
+      out.write("\n");
+      out.write("<title>Our Alumni</title>\n");
       out.write("\n");
       out.write("<link href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" rel=\"stylesheet\" >\n");
       out.write("<link href=\"https://fonts.googleapis.com/css?family=Arvo\" rel=\"stylesheet\">\n");
@@ -75,6 +73,7 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
       out.write("<link rel=\"stylesheet\" href=\"css/front1.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"css/alumni.css\">\n");
+      out.write("    \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("    \n");
@@ -164,43 +163,36 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <a  class=\"nav-link\" href=\"login.jsp\">Admin <span class=\"glyphicon glyphicon-user\"></span></a>  \n");
       out.write("    </li>  \n");
       out.write("    </ul>  \n");
-      out.write(" </div></div></nav>  \n");
-      out.write("<script>\n");
-      out.write("    \n");
-      out.write("    var btns=document.getElementsByClassName(\"nav-item\");\n");
-      out.write("    var b=document.getElementsByClassName(\"nav-link\");\n");
-      out.write("    var curlocation = location.href;\n");
-      out.write("    \n");
-      out.write("    for (var i = 0; i < btns.length; i++) {\n");
-      out.write("        btns[i].addEventListener(\"click\", function() {\n");
-      out.write("            var current = document.getElementsByClassName(\"active\");\n");
-      out.write("            current[0].className = current[0].className.replace(\" active\", \"\");\n");
-      out.write("            this.className += \" active\";\n");
-      out.write("        });\n");
-      out.write("        btns[i].classList.remove(\"active\");\n");
-      out.write("        if(b[i].href == curlocation){\n");
-      out.write("            btns[i].classList.add(\"active\");\n");
-      out.write("        }\n");
-      out.write("    }\n");
-      out.write("    var cur = document.getElementsByClassName(\"active\");\n");
-      out.write("    if(cur[0]==null)\n");
-      out.write("    {\n");
-      out.write("        btns[0].classList.add(\"active\");\n");
-      out.write("    }\n");
-      out.write("</script>\n");
+      out.write(" </div></div></nav>\n");
+      out.write("<script src=\"js/nav_Active_Menu.js\"></script>\n");
       out.write("\n");
       out.write("         \n");
       out.write("          <div class=\"gal2\"><h1>Our Alumni</h1></div>\n");
-      out.write("        \n");
-      out.write("        \n");
+      out.write("        ");
+
+            DbManager db = new DbManager();
+            String q = "select distinct batch from alumni order by batch desc";
+            ResultSet rss = db.selectQuery(q);
+            while(rss.next())
+            {
+                int batch = rss.getInt(1);
+
+        
+      out.write("\n");
       out.write("        <div class=\"row\">\n");
-      out.write("            \n");
+      out.write("            <div class=\"column\">\n");
+      out.write("                <div id=\"div1\">");
+      out.print(rss.getInt(1));
+      out.write("</div>\n");
+      out.write("                <div id=\"triangle\"></div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("        <div class=\"row\">            \n");
       out.write("            ");
 
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-                PreparedStatement ps=con.prepareStatement("select * from alumni order by batch desc");
-                ResultSet rs=ps.executeQuery();
+                String query = "select * from alumni where batch = '"+batch+"'";
+                ResultSet rs = db.selectQuery(query);
+
                 while(rs.next())
                 {
             
@@ -228,6 +220,9 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("            \n");
       out.write("        </div>\n");
+      out.write("            ");
+ } 
+      out.write("\n");
       out.write("          ");
       out.write("    \t   <div class=\"top\" id=\"5\" >\n");
       out.write("\t\t<div id=\"meee\">\n");

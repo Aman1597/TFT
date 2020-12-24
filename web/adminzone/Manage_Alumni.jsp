@@ -57,7 +57,7 @@ else
                 grid-template-columns: auto auto auto;
                 grid-column-gap: 2%;
                 margin: 0 3% 1% 3%;
-                padding: 0 2% 2.5% 2%;
+                padding: 0 2% 3.2% 2%;
                 background-color: white;
                 box-shadow: 0 10px 15px 5px grey;
             }
@@ -80,7 +80,7 @@ else
             {
                 margin: 3% 3% 1% 3%;
                 display: grid;
-                grid-template-columns: 10% 0% auto;
+                grid-template-columns: 225px 0% auto;
                 background-color: white;
                 box-shadow: -5px 5px 13px 0px grey;
             }
@@ -100,16 +100,18 @@ else
                 border-right: 0px solid transparent;
                 border-bottom: 3vh solid transparent;
                 border-left: 6vh solid grey;// whitesmoke;
+                border-left: collapse;
             }
             @media screen and (max-width: 650px){
                 .grid-container1{
                     grid-template-columns: auto !important;
+                    padding-bottom: 6% !important;
                 }
             }
             @media screen and (max-width: 1050px){
                 .grid-container1{
                     grid-template-columns: auto auto;
-                    padding: 0 3% 0 3%;
+                    padding: 0 3% 4% 3%;
                     grid-column-gap: 3%;
                 }
             }

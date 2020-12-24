@@ -5,7 +5,7 @@
 <html>
 <head>
 <%@include file="generalComponents/metaTags.jsp" %>
-<title>TFT</title>
+<title>Our Alumni</title>
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
 <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/front1.css">
     <link rel="stylesheet" href="css/alumni.css">
+    
     </head>
     <body>
     
@@ -24,13 +25,25 @@
         <%@include file="generalComponents/navbar.jsp"%>
          
           <div class="gal2"><h1>Our Alumni</h1></div>
-        
-        
+          <div class="row"><input type="search" placeholder="SEARCH" /></div>
+        <%
+            DbManager db = new DbManager();
+            String q = "select distinct batch from alumni order by batch desc";
+            ResultSet rss = db.selectQuery(q);
+            while(rss.next())
+            {
+                int batch = rss.getInt(1);
+
+        %>
         <div class="row">
+
+            <div id="div1"><%=rss.getInt(1)%></div>
+            <div id="triangle"></div>
             
+        </div>
+        <div class="row">            
             <%
-                DbManager db = new DbManager();
-                String query = "select * from alumni order by batch desc" ;
+                String query = "select * from alumni where batch = '"+batch+"'";
                 ResultSet rs = db.selectQuery(query);
 
                 while(rs.next())
@@ -49,6 +62,7 @@
             <%  } %>
             
         </div>
+            <% } %>
           <%@include file="generalComponents/foot.jsp"%>
         
         
