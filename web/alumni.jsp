@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/front1.css">
     <link rel="stylesheet" href="css/alumni.css">
-    
+    <script src="js/alumniSearch.js" rel="javascript" type="text/javascript"></script>
     </head>
     <body>
     
@@ -25,7 +25,7 @@
         <%@include file="generalComponents/navbar.jsp"%>
          
           <div class="gal2"><h1>Our Alumni</h1></div>
-          <div class="row"><input type="search" placeholder="SEARCH" /></div>
+          <div class="row"><input type="search" id="searchBar" onkeyup="searchAlumni()" placeholder="SEARCH"/></div>
         <%
             DbManager db = new DbManager();
             String q = "select distinct batch from alumni order by batch desc";
@@ -35,13 +35,13 @@
                 int batch = rss.getInt(1);
 
         %>
-        <div class="row">
+        <div class="row batchLabel">
 
             <div id="div1"><%=rss.getInt(1)%></div>
             <div id="triangle"></div>
             
         </div>
-        <div class="row">            
+        <div class="row alumniContainer">            
             <%
                 String query = "select * from alumni where batch = '"+batch+"'";
                 ResultSet rs = db.selectQuery(query);
@@ -53,9 +53,9 @@
               <div class="alu">
                 <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(5)%>" alt="Image Unavailable">
                 <div class="cont">
-                  <h2><%=rs.getString(2)%></h2>
-                  <h5 class="title t2"><%=rs.getString(3)%></h5>
-                  <p class="title t1">Batch:&nbsp; <%=rs.getInt(4)%></p>
+                    <h2 class="key"><%=rs.getString(2)%></h2>
+                    <h5 class="title t2 key"><%=rs.getString(3)%></h5>
+                    <p class="title t1 key">Batch:&nbsp; <%=rs.getInt(4)%></p>
                 </div>
               </div>
             </div>
@@ -63,7 +63,8 @@
             
         </div>
             <% } %>
-          <%@include file="generalComponents/foot.jsp"%>
+          <div style="height: 10vh;"></div>
+        <%@include file="generalComponents/foot.jsp"%>
         
         
     </body>

@@ -108,8 +108,10 @@
         border-bottom-color: white;
         transition: border-bottom-color 2s linear;
     }
-    ::placeholder{
+    .grid-item input[type="number"]::placeholder{
         color: yellow;//inherit;
+        text-transform: none;
+        font-size: 1.8rem;
     }
     .grid-item input:hover,select:hover,textarea:hover{
         box-shadow: 1px 1px 20px 5px white;
@@ -170,6 +172,9 @@
         color: white;
         background:rgba(8, 36, 69, 0.98);
     }
+    
+    
+
 
     
     

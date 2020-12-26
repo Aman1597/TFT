@@ -25,6 +25,7 @@ else
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/alumniSearch.js" rel="javascript" type="text/javascript"></script>
         <style>
             body{
                 grid-template-rows: 10vh 90vh auto;
@@ -48,13 +49,9 @@ else
             .btn1{
                 padding: 5.5% 0 4% 0;
             }
-            ::placeholder{
-                text-transform: none;
-                font-size: 1.8rem;
-            }
             .grid-container1{
                 display: grid;
-                grid-template-columns: auto auto auto;
+                grid-template-columns: 1fr 1fr 1fr;
                 grid-column-gap: 2%;
                 margin: 0 3% 1% 3%;
                 padding: 0 2% 3.2% 2%;
@@ -104,16 +101,34 @@ else
             }
             @media screen and (max-width: 650px){
                 .grid-container1{
-                    grid-template-columns: auto !important;
+                    grid-template-columns: 1fr !important;// auto !important;
                     padding-bottom: 6% !important;
                 }
             }
             @media screen and (max-width: 1050px){
                 .grid-container1{
-                    grid-template-columns: auto auto;
+                    grid-template-columns: 1fr 1fr;
                     padding: 0 3% 4% 3%;
                     grid-column-gap: 3%;
                 }
+            }
+            body .row{
+                margin: 5vh 0 3vh 0;
+            }
+            
+            body .row input[type="search"]{
+                margin: 0 auto;
+                //text-align: center;
+                border-radius: 3vw;
+                outline: none;
+                padding: 0 1.5vw;
+                font-size: 1.2vw;
+                padding-bottom: 0.45vh;
+                height: 6.4vh;//6.5vh;
+                border: none;// 2px solid grey;
+                box-shadow: 0 0 10px grey;
+                line-height: calc(6.4vh + 4px);// calc(6.5vh + 4px);//6.5vh;
+                width: 50vw;//calc(100vw - 7rem);
             }
         </style>
     </head>
@@ -153,6 +168,8 @@ else
             <h1>MANAGE ALUMNI<span class="glyphicon glyphicon-arrow-down"></span></h1>
         </div>
         
+        <div class="row"><input type="search" id="searchBar" onkeyup="searchAlumni()" placeholder="SEARCH"/></div>
+        
         <div class="table-outer1">
             <div class="grid-outer1">
                 <%
@@ -164,11 +181,11 @@ else
                         int batch = rss.getInt(1);
                     
                 %>
-                <div class="batchNo">
+                <div class="batchNo batchLabel">
                     <div id="div1"><%=rss.getInt(1)%></div>
                     <div id="triangle"></div>                    
                 </div>
-                <div class="grid-container1">
+                <div class="grid-container1 alumniContainer">
                     <%
                         String query = "select * from alumni where batch = '"+batch+"'";
                         ResultSet rs= db.selectQuery(query);
@@ -176,10 +193,10 @@ else
                         while(rs.next())
                         {
                     %>
-                    <div class="grid-item2">
+                    <div class="grid-item2 column">
                         <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(5)%>" />
-                        <h2><%=rs.getString(2)%></h2>
-                        <h3><%=rs.getString(3)%>&nbsp; &nbsp;Batch:&nbsp; <%=rs.getInt(4)%></h3>
+                        <h2 class="key"><%=rs.getString(2)%></h2>
+                        <h3 class="key"><%=rs.getString(3)%>&nbsp; &nbsp;Batch:&nbsp; <%=rs.getInt(4)%></h3>
                         <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(5)%>">DELETE</a></h3>
                     </div>
                     <% } %>

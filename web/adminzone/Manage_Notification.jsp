@@ -62,7 +62,7 @@ else
                 <div class="grid-container">
                     <div class="grid-item" style="padding-top: 2%;">Enter Notification Text:</div>  
                     <div class="grid-item" style="align-items:start;padding-top: 2%;">
-                        <input type="text" name="notificationtext" placeholder="" required=""/>
+                        <input type="text" name="notificationtext" required=""/>
                     </div>
                     <div class="grid-item btn1"><input type="submit" value="Upload" /></div>
                 </div>

@@ -103,7 +103,7 @@ html {
     border-left: collapse;
 }
 
-.row input[type="search"]{
+ body .row input[type="search"]{
     margin: 0 auto;
     border-radius: 3vw;
     outline: none;
@@ -111,6 +111,7 @@ html {
     font-size: 1.2vw;
     padding-bottom: 0.45vh;
     //margin-left: 4rem;
+    //font-family: inherit !important;
     height: 6.5vh;
     border: none;// 2px solid grey;
     box-shadow: 0 0 10px grey;
