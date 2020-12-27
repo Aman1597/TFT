@@ -38,23 +38,4 @@ function searchAlumni(){
     }
 }    
     
-//    var tr = myTable.getElementsByTagName('tr');
-//    for(var i=1; i<tr.length; i++)
-//    {
-//        var td1 = tr[i].getElementsByTagName('td')[1];
-//        var td2 = tr[i].getElementsByTagName('td')[2];
-//
-//        if(td2){
-//            var textVal1 = td1.textContent || td1.innerHTML;
-//            var textVal2 = td2.textContent || td2.innerHTML;
-//
-//            if((textVal1.toUpperCase().indexOf(filter) > -1)||(textVal2.toUpperCase().indexOf(filter) > -1))    
-//            {
-//                tr[i].style.display = "";
-//            }else{
-//                tr[i].style.display = "none";
-//            }
-//        }
-//    }
-
-    
+   

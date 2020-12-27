@@ -69,13 +69,15 @@ else
             </form>
             <h1>MANAGE NOTIFICATION<span class="glyphicon glyphicon-arrow-down"></span></h1>
         </div>
-
+        <!--<div class="row"><input type="search" id="searchBar" onkeyup="searchNotification()" placeholder="SEARCH"/></div>-->
         <div class="table-outer1">
             <div class="grid-outer1">
                 <div class="grid-container1">
                     <div class="grid-item1 rh">NOTIFICATION</div>
                     <div class="grid-item1 rh">POSTED DATE</div>
                     <div class="grid-item1 rh">DELETE</div>
+                </div>
+                <div class="grid-container1">
                     <%
                        DbManager db = new DbManager();
                        String query = "select * from notification order by id desc";

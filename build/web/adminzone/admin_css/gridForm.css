@@ -149,7 +149,7 @@
         display: grid;
         grid-template-columns: 65% 21% 14%;
         padding: 0 0.3% 0 0.3%;
-        background-color: white;
+        background-color: whitesmoke;// white;
     }
     .grid-item1{
         font-size: 1.8rem;
@@ -159,14 +159,17 @@
         border-bottom: 1px solid black;
     }
     .grid-item1:nth-child(6n+0) , .grid-item1:nth-child(6n-1) , .grid-item1:nth-child(6n-2){
-        background-color: whitesmoke;//white;
+        background-color: white;// whitesmoke;//white;
     }
-    .grid-item1:nth-child(3n+4){
+    .grid-item1:nth-child(3n+1){
         place-items: center start;
         padding: 0 3vw 0 2vw; 
     }
     .grid-item1:nth-child(3n){
         padding: 0 3vw 0 3vw;
+    }
+    .rh:nth-child(1){
+        place-items: center;
     }
     .rh{
         color: white;

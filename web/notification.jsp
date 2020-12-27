@@ -35,19 +35,26 @@
         width: 99%;
         //padding-bottom: 100px;
     }
+    #table{
+        margin-bottom: 6vh;
+    }
     table tr
     {
         font-size: 18px;
         height: 50px;
         border-bottom: 1px solid;
     }
+    th{ 
+        background-color: rgba(8, 36, 69, 0.98); 
+        color: white;
+    }
     #h0
     {
     font-size:35px;
     letter-spacing: 2px;
     font-weight:bold;
-    margin-top: 0.72em;
-    margin-bottom:1em;
+    margin-top: 5vh;//0.72em;
+    margin-bottom:7vh; //1em;
     color:#082445;
     text-align: center;
     }
@@ -56,19 +63,36 @@
         background: white;//#f2f2f2;
     }
     @media screen and (min-width: 601px) {
-  #h0 {
-    margin-right: 25px;
-    font-size: 60px;//4vw;
-  }
-}
+        #h0 {
+          font-size: 60px;//4vw;
+        }
+    }
+    body .row{
+        margin-bottom: 10vh;
+    }
+    body .row input[type="search"]{
+        margin: 0 auto;
+        border-radius: 3vw;
+        outline: none;
+        padding: 0 1.5vw;
+        font-size: 1.2vw;
+        padding-bottom: 0.45vh;
+        height: 6.5vh;
+        border: none;// 2px solid grey;
+        box-shadow: 0 0 10px grey;
+        line-height: calc(6.5vh + 4px);//6.5vh;
+        width: 50vw;//calc(100vw - 7rem);
+    }
 </style>
+<script src="js/notificationSearch.js" type="text/javascript"></script>
 </head>
 <body>
     <%@include file="generalComponents/head.jsp"%>
     <%@include file="generalComponents/navbar.jsp"%>
     <div class="content">
         <h1 id="h0">Notifications</h1>
-        <table class="table" style="text-align: center;" border="0" cellspacing="0">
+        <div class="row"><input type="search" id="searchBar" onkeyup="searchNotification()" placeholder="SEARCH"/></div>
+        <table class="table" id="table" style="text-align: center;" border="0" cellspacing="0">
             <tr>
                 <th style="width: 17%;">S.No.</th>
                 <th>NOTIFICATIONS</th>
