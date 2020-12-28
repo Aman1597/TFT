@@ -115,21 +115,6 @@ else
             body .row{
                 margin: 5vh 0 3vh 0;
             }
-            
-            body .row input[type="search"]{
-                margin: 0 auto;
-                //text-align: center;
-                border-radius: 3vw;
-                outline: none;
-                padding: 0 1.5vw;
-                font-size: 1.2vw;
-                padding-bottom: 0.45vh;
-                height: 6.4vh;//6.5vh;
-                border: none;// 2px solid grey;
-                box-shadow: 0 0 10px grey;
-                line-height: calc(6.4vh + 4px);// calc(6.5vh + 4px);//6.5vh;
-                width: 50vw;//calc(100vw - 7rem);
-            }
         </style>
     </head>
     <body>

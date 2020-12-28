@@ -52,6 +52,7 @@ else
                 padding: 0 0 5% 0;
             }
         </style>
+        <script src="../js/notificationSearch.js" type="text/javascript"></script>
     </head>
     <body>
         <%@include file="admin_navbar.jsp"%> 
@@ -69,7 +70,7 @@ else
             </form>
             <h1>MANAGE NOTIFICATION<span class="glyphicon glyphicon-arrow-down"></span></h1>
         </div>
-        <!--<div class="row"><input type="search" id="searchBar" onkeyup="searchNotification()" placeholder="SEARCH"/></div>-->
+        <div class="row"><input type="search" id="searchBar" onkeyup="searchNotification1()" placeholder="SEARCH"/></div>
         <div class="table-outer1">
             <div class="grid-outer1">
                 <div class="grid-container1">
@@ -77,19 +78,19 @@ else
                     <div class="grid-item1 rh">POSTED DATE</div>
                     <div class="grid-item1 rh">DELETE</div>
                 </div>
+                <%
+                   DbManager db = new DbManager();
+                   String query = "select * from notification order by id desc";
+                   ResultSet rs= db.selectQuery(query);
+                   while(rs.next())
+                   {
+                %>
                 <div class="grid-container1">
-                    <%
-                       DbManager db = new DbManager();
-                       String query = "select * from notification order by id desc";
-                       ResultSet rs= db.selectQuery(query);
-                       while(rs.next())
-                       {
-                    %>
-                    <div class="grid-item1"><%=rs.getString(2)%></div>
-                    <div class="grid-item1"><%=rs.getString(3)%></div>
+                    <div class="grid-item1 key"><%=rs.getString(2)%></div>
+                    <div class="grid-item1 key"><%=rs.getString(3)%></div>
                     <div class="grid-item1"><a href="../codes/deletenotification.jsp?id=<%=rs.getInt(1)%>">Delete</a></div>
-                    <% } %>
                 </div>
+                <% } %>
             </div>
         </div>        
 

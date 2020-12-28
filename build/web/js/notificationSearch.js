@@ -23,3 +23,24 @@ function searchNotification(){
         }
     }    
 }
+
+function searchNotification1(){
+    var searchBar = document.getElementById('searchBar');
+    var filter = searchBar.value.toUpperCase();
+    var row = document.getElementsByClassName('grid-container1');
+    for(var i=1; i<row.length; i++){
+        var key1 = row[i].getElementsByClassName('key')[0];
+        var key2 = row[i].getElementsByClassName('key')[1];
+        
+        if(key2){
+            var val1 = key1.textContent || key1.innerHTML;
+            var val2 = key2.textContent || key2.innerHTML;
+        }
+        if((val1.toUpperCase().indexOf(filter) > -1)||(val2.toUpperCase().indexOf(filter) > -1))    
+        {
+            row[i].style.display = "";
+        }else{
+            row[i].style.display = "none";
+        }
+    }
+}
