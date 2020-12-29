@@ -34,13 +34,16 @@ else
                 grid-template-rows: 20% 65% 15%;
             }
             .grid-outer{
-                padding: 3% 0 17.5% 0;
+                padding: 0 0 14% 0;
             }
             .grid-container{
-                padding: .5% 2% 1% 2%;
+                padding: 2% 2% 3% 2%;
             }
             .grid-item input[type="text"]{
                 text-transform: capitalize;
+            }
+            .grid-item input[type="email"]{
+                text-transform: none;
             }
             .grid-item input[type="file"]{
                 border:none;
@@ -143,6 +146,10 @@ else
                     <div class="grid-item">
                         <input type="number" name="batch" placeholder="Passout Year (eg. 2020)" required=""/>
                     </div>  
+                    <div class="grid-item">Email:</div>  
+                    <div class="grid-item">
+                        <input type="email" name="email"/>
+                    </div>  
                     <div class="grid-item">Alumni Pic:</div>  
                     <div class="grid-item">
                         <input name="imgFile" type="file" required=""/>
@@ -179,9 +186,18 @@ else
                         {
                     %>
                     <div class="grid-item2 column">
-                        <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(5)%>" />
+                        <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(6)%>" />
                         <h2 class="key"><%=rs.getString(2)%></h2>
                         <h3 class="key"><%=rs.getString(3)%>&nbsp; &nbsp;Batch:&nbsp; <%=rs.getInt(4)%></h3>
+                        <%    
+                        if(rs.getString(5)==null){
+                        %>
+                        <h3 class="key">NA</h3>
+                        <%
+                        }else{
+                        %>
+                        <h3 class="key"><%=rs.getString(5)%></h3>
+                        <% } %>
                         <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(5)%>">DELETE</a></h3>
                     </div>
                     <% } %>
