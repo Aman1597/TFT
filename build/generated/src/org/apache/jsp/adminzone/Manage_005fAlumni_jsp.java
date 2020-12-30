@@ -4,9 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.Connection;
+import mypack.DbManager;
 
 public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -50,9 +48,16 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
+      out.write('\n');
+      out.write('\n');
+
+if(session.getAttribute("id")==null)
+{
+    response.sendRedirect("../login.jsp");
+}
+else
+{
+
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -63,10 +68,11 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("        <meta name=\"viewport\" content=\"width-device-width , initial-scale=1, user-scalable=yes\">\n");
       out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE-edge\">\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>MANAGE ALUMNI</title>\n");
       out.write("        <link href=\"../Bootstrap/css/bootstrap-v3.3.7.min.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <link href=\"../Bootstrap/css/bootstrap-v4.2.1.min.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <link href=\"admin_css/gridForm.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+      out.write("        <script src=\"../js/alumniSearch.js\" rel=\"javascript\" type=\"text/javascript\"></script>\n");
       out.write("        <style>\n");
       out.write("            body{\n");
       out.write("                grid-template-rows: 10vh 90vh auto;\n");
@@ -75,13 +81,16 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                grid-template-rows: 20% 65% 15%;\n");
       out.write("            }\n");
       out.write("            .grid-outer{\n");
-      out.write("                padding: 3% 0 35% 0;\n");
+      out.write("                padding: 0 0 14% 0;\n");
       out.write("            }\n");
       out.write("            .grid-container{\n");
-      out.write("                padding: .5% 2% 1% 2%;\n");
+      out.write("                padding: 2% 2% 3% 2%;\n");
       out.write("            }\n");
       out.write("            .grid-item input[type=\"text\"]{\n");
       out.write("                text-transform: capitalize;\n");
+      out.write("            }\n");
+      out.write("            .grid-item input[type=\"email\"]{\n");
+      out.write("                text-transform: none;\n");
       out.write("            }\n");
       out.write("            .grid-item input[type=\"file\"]{\n");
       out.write("                border:none;\n");
@@ -90,9 +99,80 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("            .btn1{\n");
       out.write("                padding: 5.5% 0 4% 0;\n");
       out.write("            }\n");
-      out.write("            ::placeholder{\n");
-      out.write("                text-transform: none;\n");
-      out.write("                font-size: 1.8rem;\n");
+      out.write("            .grid-container1{\n");
+      out.write("                display: grid;\n");
+      out.write("                grid-template-columns: 1fr 1fr 1fr;\n");
+      out.write("                grid-column-gap: 2%;\n");
+      out.write("                margin: 0 3% 1% 3%;\n");
+      out.write("                padding: 0 2% 3.2% 2%;\n");
+      out.write("                background-color: white;\n");
+      out.write("                box-shadow: 0 10px 15px 5px grey;\n");
+      out.write("            }\n");
+      out.write("            .grid-item2{\n");
+      out.write("                display: grid;\n");
+      out.write("                place-items:center;\n");
+      out.write("                background-color: white;\n");
+      out.write("                margin-top: 8%;\n");
+      out.write("                box-shadow: 0 10px 15px 0px grey;\n");
+      out.write("            }\n");
+      out.write("            .grid-item2:hover{\n");
+      out.write("                box-shadow: 0 20px 30px 10px grey;\n");
+      out.write("            }\n");
+      out.write("            .grid-item2 img{\n");
+      out.write("                height: 30em;\n");
+      out.write("                width: 30em;\n");
+      out.write("                margin: 4% 0 2% 0;\n");
+      out.write("            }\n");
+      out.write("            .batchNo\n");
+      out.write("            {\n");
+      out.write("                margin: 3% 3% 1% 3%;\n");
+      out.write("                display: grid;\n");
+      out.write("                grid-template-columns: 225px 0% auto;\n");
+      out.write("                background-color: white;\n");
+      out.write("                box-shadow: -5px 5px 13px 0px grey;\n");
+      out.write("            }\n");
+      out.write("            #div1\n");
+      out.write("            {\n");
+      out.write("                height: 6vh; \n");
+      out.write("                line-height: 6vh;\n");
+      out.write("                text-align: center;\n");
+      out.write("                background-color: grey;// whitesmoke;\n");
+      out.write("                color: white;// whitesmoke;//grey;\n");
+      out.write("                font-weight: bold;\n");
+      out.write("                font-size: 2.4rem;\n");
+      out.write("            }\n");
+      out.write("            #triangle{\n");
+      out.write("                height: 0px;\n");
+      out.write("                border-top: 3vh solid transparent;\n");
+      out.write("                border-right: 0px solid transparent;\n");
+      out.write("                border-bottom: 3vh solid transparent;\n");
+      out.write("                border-left: 6vh solid grey;// whitesmoke;\n");
+      out.write("                border-left: collapse;\n");
+      out.write("            }\n");
+      out.write("            @media screen and (max-width: 650px){\n");
+      out.write("                .grid-container1{\n");
+      out.write("                    grid-template-columns: 1fr !important;// auto !important;\n");
+      out.write("                    padding-bottom: 6% !important;\n");
+      out.write("                }\n");
+      out.write("            }\n");
+      out.write("            @media screen and (max-width: 1050px){\n");
+      out.write("                .grid-container1{\n");
+      out.write("                    grid-template-columns: 1fr 1fr;\n");
+      out.write("                    padding: 0 3% 4% 3%;\n");
+      out.write("                    grid-column-gap: 3%;\n");
+      out.write("                }\n");
+      out.write("            }\n");
+      out.write("            body .row{\n");
+      out.write("                margin: 5vh 0 3vh 0;\n");
+      out.write("            }\n");
+      out.write("            .mailIcon{\n");
+      out.write("                font-weight: bold;\n");
+      out.write("                \n");
+      out.write("                font-family: inherit;//sans-serif;\n");
+      out.write("                background-image: linear-gradient(45deg, #FFE53B, #FF2525, #21D4FD, #B721FF);\n");
+      out.write("                font-stretch: condensed;\n");
+      out.write("                -webkit-background-clip: text;\n");
+      out.write("                -webkit-text-fill-color: transparent;\n");
       out.write("            }\n");
       out.write("        </style>\n");
       out.write("    </head>\n");
@@ -106,10 +186,7 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("\n");
       out.write("<div class=\"collapse navbar-collapse\" id=\"mynav\">  \n");
       out.write("<ul class=\"navbar-nav ml-auto\">  \n");
-      out.write("   <li class=\"nav-item active\">  \n");
-      out.write("\n");
-      out.write("   <a class=\"nav-link\" href=\"#\">Home <span class=\"glyphicon glyphicon-home\"></span></a>\n");
-      out.write("    </li>  \n");
+      out.write("     \n");
       out.write("     <li class=\"nav-item\" >  \n");
       out.write("\n");
       out.write("    <a  class=\"nav-link\" href=\"Manage_Notification.jsp\">Manage Notification <span class=\"glyphicon glyphicon-bell\"></span></a>  \n");
@@ -122,16 +199,16 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("      \n");
       out.write("      <li class=\"nav-item \" >  \n");
       out.write("\n");
-      out.write("    <a  class=\"nav-link\" href=\"#\">Upload Notes <span class=\"glyphicon glyphicon-list-alt\"></span></a>  \n");
+      out.write("    <a  class=\"nav-link\" href=\"Manage_Notes.jsp\">Manage Notes <span class=\"glyphicon glyphicon-list-alt\"></span></a>  \n");
       out.write("    </li>  \n");
       out.write("    \n");
       out.write("    <li class=\"nav-item\" >  \n");
       out.write("\n");
-      out.write("    <a  class=\"nav-link\" href=\"#\">Manage Alumni <span class=\"glyphicon glyphicon-king\"></span></a>  \n");
+      out.write("    <a  class=\"nav-link\" href=\"Manage_Alumni.jsp\">Manage Alumni <span class=\"glyphicon glyphicon-king\"></span></a>  \n");
       out.write("    </li>  \n");
       out.write("      <li class=\"nav-item\" >  \n");
       out.write("\n");
-      out.write("    <a  class=\"nav-link\" href=\"#\">Manage Gallery <span class=\"glyphicon glyphicon-picture\"></span></a>  \n");
+      out.write("    <a  class=\"nav-link\" href=\"Manage_Gallery.jsp\">Manage Gallery <span class=\"glyphicon glyphicon-picture\"></span></a>  \n");
       out.write("    </li> \n");
       out.write("    \n");
       out.write("    <li class=\"nav-item\" >  \n");
@@ -140,29 +217,7 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("    </li>  \n");
       out.write("    </ul>  \n");
       out.write(" </div></div></nav>  \n");
-      out.write("<script>\n");
-      out.write("    \n");
-      out.write("    var btns=document.getElementsByClassName(\"nav-item\");\n");
-      out.write("    var b=document.getElementsByClassName(\"nav-link\");\n");
-      out.write("    var curlocation = location.href;\n");
-      out.write("    \n");
-      out.write("    for (var i = 0; i < btns.length; i++) {\n");
-      out.write("        btns[i].addEventListener(\"click\", function() {\n");
-      out.write("            var current = document.getElementsByClassName(\"active\");\n");
-      out.write("            current[0].className = current[0].className.replace(\" active\", \"\");\n");
-      out.write("            this.className += \" active\";\n");
-      out.write("        });\n");
-      out.write("        btns[i].classList.remove(\"active\");\n");
-      out.write("        if(b[i].href == curlocation){\n");
-      out.write("            btns[i].classList.add(\"active\");\n");
-      out.write("        }\n");
-      out.write("    }\n");
-      out.write("    var cur = document.getElementsByClassName(\"active\");\n");
-      out.write("    if(cur[0]==null)\n");
-      out.write("    {\n");
-      out.write("        btns[0].classList.add(\"active\");\n");
-      out.write("    }\n");
-      out.write("</script>\n");
+      out.write("<script src=\"../js/nav_Active_Menu.js\"></script>");
       out.write(" \n");
       out.write("        <div class=\"form-outer\">\n");
       out.write("            <h1>ADD &nbsp;ALUMNI</h1>\n");
@@ -188,6 +243,10 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                    <div class=\"grid-item\">\n");
       out.write("                        <input type=\"number\" name=\"batch\" placeholder=\"Passout Year (eg. 2020)\" required=\"\"/>\n");
       out.write("                    </div>  \n");
+      out.write("                    <div class=\"grid-item\">Email:</div>  \n");
+      out.write("                    <div class=\"grid-item\">\n");
+      out.write("                        <input type=\"email\" name=\"email\"/>\n");
+      out.write("                    </div>  \n");
       out.write("                    <div class=\"grid-item\">Alumni Pic:</div>  \n");
       out.write("                    <div class=\"grid-item\">\n");
       out.write("                        <input name=\"imgFile\" type=\"file\" required=\"\"/>\n");
@@ -198,46 +257,83 @@ public final class Manage_005fAlumni_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("            <h1>MANAGE ALUMNI<span class=\"glyphicon glyphicon-arrow-down\"></span></h1>\n");
       out.write("        </div>\n");
       out.write("        \n");
+      out.write("        <div class=\"row\"><input type=\"search\" id=\"searchBar\" onkeyup=\"searchAlumni()\" placeholder=\"SEARCH\"/></div>\n");
       out.write("        \n");
-      out.write("        <div class=\"row\">\n");
-      out.write("            \n");
-      out.write("            ");
+      out.write("        <div class=\"table-outer1\">\n");
+      out.write("            <div class=\"grid-outer1\">\n");
+      out.write("                ");
 
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-                PreparedStatement ps=con.prepareStatement("select * from alumni order by batch desc");
-                ResultSet rs=ps.executeQuery();
-                while(rs.next())
-                {
-            
+                    DbManager db = new DbManager();
+                    String q = "select distinct batch from alumni order by batch desc";
+                    ResultSet rss = db.selectQuery(q);
+                    while(rss.next())
+                    {
+                        int batch = rss.getInt(1);
+                    
+                
       out.write("\n");
-      out.write("            <div class=\"column\">\n");
-      out.write("              <div class=\"alu\">\n");
-      out.write("                <img src=\"");
-      out.print(request.getContextPath() + "/AlumniImages/" + rs.getString(5));
-      out.write("\" alt=\"Image Unavailable\">\n");
-      out.write("                <div class=\"cont\">\n");
-      out.write("                  <h2>");
+      out.write("                <div class=\"batchNo batchLabel\">\n");
+      out.write("                    <div id=\"div1\">");
+      out.print(rss.getInt(1));
+      out.write("</div>\n");
+      out.write("                    <div id=\"triangle\"></div>                    \n");
+      out.write("                </div>\n");
+      out.write("                <div class=\"grid-container1 alumniContainer\">\n");
+      out.write("                    ");
+
+                        String query = "select * from alumni where batch = '"+batch+"'";
+                        ResultSet rs= db.selectQuery(query);
+
+                        while(rs.next())
+                        {
+                    
+      out.write("\n");
+      out.write("                    <div class=\"grid-item2 column\">\n");
+      out.write("                        <img src=\"");
+      out.print(request.getContextPath() + "/AlumniImages/" + rs.getString(6));
+      out.write("\" />\n");
+      out.write("                        <h2 class=\"key\">");
       out.print(rs.getString(2));
       out.write("</h2>\n");
-      out.write("                  <h5 class=\"title t2\">");
+      out.write("                        <h3 class=\"key\">");
       out.print(rs.getString(3));
-      out.write("</h5>\n");
-      out.write("                  <p class=\"title t1\">Batch:&nbsp; ");
+      out.write("&nbsp; &nbsp;Batch:&nbsp; ");
       out.print(rs.getInt(4));
-      out.write("</p>\n");
-      out.write("                  <h4>DELETE</h4>\n");
-      out.write("                </div>\n");
-      out.write("              </div>\n");
-      out.write("            </div>\n");
-      out.write("            ");
-  } 
+      out.write("</h3>\n");
+      out.write("                        ");
+
+                        if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
+                        
       out.write("\n");
-      out.write("            \n");
+      out.write("                        <h3 class=\"key\">NA</h3>\n");
+      out.write("                        ");
+
+                        }else{
+                        
+      out.write("\n");
+      out.write("                        <h3 class=\"key\"><m class=\"mailIcon\">M</m> ");
+      out.print(rs.getString(5));
+      out.write("</h3>\n");
+      out.write("                        ");
+ } 
+      out.write("\n");
+      out.write("                        <h3><a href=\"../codes/deleteAlumni.jsp?filename=");
+      out.print(rs.getString(6));
+      out.write("\">DELETE</a></h3>\n");
+      out.write("                    </div>\n");
+      out.write("                    ");
+ } 
+      out.write("\n");
+      out.write("                </div>\n");
+      out.write("                ");
+ } 
+      out.write("\n");
+      out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("        \n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
+ } 
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

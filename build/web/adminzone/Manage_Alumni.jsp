@@ -118,7 +118,20 @@ else
             body .row{
                 margin: 5vh 0 3vh 0;
             }
+            .grid-item2 .mailIcon{
+                //font-weight:  bold;
+                //font-size: 2rem;
+                //font-family: fantasy;
+                font-family: 'Goldman', cursive;//inherit;//sans-serif;
+                background-image: linear-gradient(225deg, #FFE53B, #FF2525, #21D4FD, #B721FF);//, #21D4FD, #B721FF);
+                //text-shadow: -2px 2px 2px ;
+                //font-stretch: condensed;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         </style>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap" rel="stylesheet">
     </head>
     <body>
         <%@include file="admin_navbar.jsp"%> 
@@ -189,21 +202,21 @@ else
                         <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(6)%>" />
                         <h2 class="key"><%=rs.getString(2)%></h2>
                         <h3 class="key"><%=rs.getString(3)%>&nbsp; &nbsp;Batch:&nbsp; <%=rs.getInt(4)%></h3>
-                        <%    
-                        if(rs.getString(5)==null){
+                        <%
+                        if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
                         %>
-                        <h3 class="key">NA</h3>
+                        <h3 class="key"><m class="mailIcon">M</m>:&nbsp; NA</h3>
                         <%
                         }else{
                         %>
-                        <h3 class="key"><%=rs.getString(5)%></h3>
+                        <h3 class="key"><m class="mailIcon">M</m>:&nbsp;<%=rs.getString(5)%></h3>
                         <% } %>
-                        <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(5)%>">DELETE</a></h3>
+                        <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(6)%>">DELETE</a></h3>
                     </div>
                     <% } %>
                 </div>
                 <% } %>
-            </div>
+            </div>                                  <!--<img class="mailIcon" src="../image/mail_icon.png" /><m class="mailIcon">M</m>-->
         </div>
 
     </body>

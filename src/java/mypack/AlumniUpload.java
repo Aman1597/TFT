@@ -90,14 +90,18 @@ public class AlumniUpload extends HttpServlet {
         String name = getCapitalizedString(strx);
         String branch = request.getParameter("branch");
         int batch = Integer.parseInt(request.getParameter("batch"));
-        String email = request.getParameter("email");
+        String email;
+        String emailX = request.getParameter("email");
+        if(emailX.isEmpty()){
+            email = null;
+        }
+        else{
+            email = emailX;
+        }
         Part p = request.getPart("imgFile");
         String filename = p.getSubmittedFileName();
         DbManager db = new DbManager();
         String query = "select * from alumni where imgname='"+filename+"'";
-//        Class.forName("com.mysql.jdbc.Driver");
-//        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb", "root", "");
-//        PreparedStatement pss = con.prepareStatement("select * from alumni where imgname='"+filename+"'");
         ResultSet rss = db.selectQuery(query);
         if(rss.next())
         {
@@ -105,14 +109,18 @@ public class AlumniUpload extends HttpServlet {
         }
         else
         {
-        InputStream is = p.getInputStream();
-        File f = new File(request.getRealPath("/AlumniImages"), filename);
-        Files.copy(is, f.toPath());
-        String q = "insert into alumni(name, branch, batch, email, imgname, uploaddate) values('"+name+"', '"+branch+"', '"+batch+"', '"+email+"', '"+filename+"', curdate())";
-//        PreparedStatement ps = con.prepareStatement("insert into alumni(name, branch, batch, imgname, uploaddate) values('"+name+"', '"+branch+"', '"+batch+"', '"+filename+"', curdate())");
-//        ps.executeUpdate();
-        db.executeNonQuery(q);
-        response.getWriter().print("<script>alert('Alumni Added Successfully');window.location.href='adminzone/Manage_Alumni.jsp';</script>");
+            InputStream is = p.getInputStream();
+            File f = new File(request.getRealPath("/AlumniImages"), filename);
+            Files.copy(is, f.toPath());
+            String q = "insert into alumni(name, branch, batch, email, imgname, uploaddate) values('"+name+"', '"+branch+"', '"+batch+"', '"+email+"', '"+filename+"', curdate())";
+    //        PreparedStatement ps = con.prepareStatement("insert into alumni(name, branch, batch, imgname, uploaddate) values('"+name+"', '"+branch+"', '"+batch+"', '"+filename+"', curdate())");
+    //        ps.executeUpdate();
+            if(db.executeNonQuery(q)){
+                response.getWriter().print("<script>alert('Alumni Added Successfully');window.location.href='adminzone/Manage_Alumni.jsp';</script>");
+            }
+            else{
+                response.getWriter().print("some sql exception occured");
+            }
         }
     }
     catch(Exception e){
