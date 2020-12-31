@@ -165,16 +165,20 @@ else
       out.write("            body .row{\n");
       out.write("                margin: 5vh 0 3vh 0;\n");
       out.write("            }\n");
-      out.write("            .mailIcon{\n");
-      out.write("                font-weight: bold;\n");
-      out.write("                \n");
-      out.write("                font-family: inherit;//sans-serif;\n");
-      out.write("                background-image: linear-gradient(45deg, #FFE53B, #FF2525, #21D4FD, #B721FF);\n");
-      out.write("                font-stretch: condensed;\n");
+      out.write("            .grid-item2 .mailIcon{\n");
+      out.write("                //font-weight:  bold;\n");
+      out.write("                //font-size: 2rem;\n");
+      out.write("                //font-family: fantasy;\n");
+      out.write("                font-family: 'Goldman', cursive;//inherit;//sans-serif;\n");
+      out.write("                background-image: linear-gradient(225deg, #FFE53B, #FF2525, #21D4FD, #B721FF);//, #21D4FD, #B721FF);\n");
+      out.write("                //text-shadow: -2px 2px 2px ;\n");
+      out.write("                //font-stretch: condensed;\n");
       out.write("                -webkit-background-clip: text;\n");
       out.write("                -webkit-text-fill-color: transparent;\n");
       out.write("            }\n");
       out.write("        </style>\n");
+      out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap\" rel=\"stylesheet\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
@@ -305,13 +309,13 @@ else
                         if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
                         
       out.write("\n");
-      out.write("                        <h3 class=\"key\">NA</h3>\n");
+      out.write("                        <h3 class=\"key\"><m class=\"mailIcon\">M</m>:&nbsp; NA</h3>\n");
       out.write("                        ");
 
                         }else{
                         
       out.write("\n");
-      out.write("                        <h3 class=\"key\"><m class=\"mailIcon\">M</m> ");
+      out.write("                        <h3 class=\"key\"><m class=\"mailIcon\">M</m>:&nbsp;");
       out.print(rs.getString(5));
       out.write("</h3>\n");
       out.write("                        ");
@@ -328,7 +332,7 @@ else
       out.write("                ");
  } 
       out.write("\n");
-      out.write("            </div>\n");
+      out.write("            </div>                                  <!--<img class=\"mailIcon\" src=\"../image/mail_icon.png\" /><m class=\"mailIcon\">M</m>-->\n");
       out.write("        </div>\n");
       out.write("\n");
       out.write("    </body>\n");

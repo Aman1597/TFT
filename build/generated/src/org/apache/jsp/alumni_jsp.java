@@ -73,7 +73,9 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
       out.write("<link rel=\"stylesheet\" href=\"css/front1.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"css/alumni.css\">\n");
-      out.write("    \n");
+      out.write("    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\">\n");
+      out.write("    <link href=\"https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap\" rel=\"stylesheet\">\n");
+      out.write("    <script src=\"js/alumniSearch.js\" rel=\"javascript\" type=\"text/javascript\"></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("    \n");
@@ -168,6 +170,7 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("         \n");
       out.write("          <div class=\"gal2\"><h1>Our Alumni</h1></div>\n");
+      out.write("          <div class=\"row\"><input type=\"search\" id=\"searchBar\" onkeyup=\"searchAlumni()\" placeholder=\"SEARCH\"/></div>\n");
       out.write("        ");
 
             DbManager db = new DbManager();
@@ -179,15 +182,15 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
 
         
       out.write("\n");
-      out.write("        <div class=\"row\">\n");
-      out.write("            <div class=\"column\">\n");
-      out.write("                <div id=\"div1\">");
+      out.write("        <div class=\"row batchLabel\">\n");
+      out.write("\n");
+      out.write("            <div id=\"div1\">");
       out.print(rss.getInt(1));
       out.write("</div>\n");
-      out.write("                <div id=\"triangle\"></div>\n");
-      out.write("            </div>\n");
+      out.write("            <div id=\"triangle\"></div>\n");
+      out.write("            \n");
       out.write("        </div>\n");
-      out.write("        <div class=\"row\">            \n");
+      out.write("        <div class=\"row alumniContainer\">            \n");
       out.write("            ");
 
                 String query = "select * from alumni where batch = '"+batch+"'";
@@ -200,18 +203,35 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"column\">\n");
       out.write("              <div class=\"alu\">\n");
       out.write("                <img src=\"");
-      out.print(request.getContextPath() + "/AlumniImages/" + rs.getString(5));
+      out.print(request.getContextPath() + "/AlumniImages/" + rs.getString(6));
       out.write("\" alt=\"Image Unavailable\">\n");
       out.write("                <div class=\"cont\">\n");
-      out.write("                  <h2>");
+      out.write("                    <h2 class=\"key\">");
       out.print(rs.getString(2));
       out.write("</h2>\n");
-      out.write("                  <h5 class=\"title t2\">");
+      out.write("                    <h5 class=\"title t2 key\">");
       out.print(rs.getString(3));
       out.write("</h5>\n");
-      out.write("                  <p class=\"title t1\">Batch:&nbsp; ");
+      out.write("                    <p class=\"title t1 key\">Batch:&nbsp; ");
       out.print(rs.getInt(4));
       out.write("</p>\n");
+      out.write("                    ");
+
+                        if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
+                    
+      out.write("\n");
+      out.write("                    <p class=\"title t1 key\"><m class=\"mailIcon\">M</m>:&nbsp; NA</p>\n");
+      out.write("                    ");
+
+                        }else{
+                    
+      out.write("\n");
+      out.write("                    <p class=\"title t1 key\"><m class=\"mailIcon\">M</m>:&nbsp; ");
+      out.print(rs.getString(5));
+      out.write("</p>\n");
+      out.write("                    ");
+ } 
+      out.write("\n");
       out.write("                </div>\n");
       out.write("              </div>\n");
       out.write("            </div>\n");
@@ -223,7 +243,8 @@ public final class alumni_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            ");
  } 
       out.write("\n");
-      out.write("          ");
+      out.write("          <div style=\"height: 10vh;\"></div>\n");
+      out.write("        ");
       out.write("    \t   <div class=\"top\" id=\"5\" >\n");
       out.write("\t\t<div id=\"meee\">\n");
       out.write("            <div  class=\"c1\"><a name=\"whatever\"><br />Get In Touch</a></div>\n");

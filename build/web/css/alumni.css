@@ -7,10 +7,10 @@ html {
 }
 
 .column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px ;
     margin-top: 2rem;
 }
 
@@ -118,4 +118,16 @@ html {
     line-height: calc(6.5vh + 4px);//6.5vh;
     
     width: 50vw;//calc(100vw - 7rem);
+}
+p{
+    margin-bottom: 0.25rem;
+}
+.x{
+    margin-bottom: 1.2rem;
+}
+.mailIcon{
+    font-family: 'Goldman', cursive;//inherit;//sans-serif;
+    background-image: linear-gradient(225deg, #FFE53B, #FF2525, #21D4FD, #B721FF);//, #21D4FD, #B721FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

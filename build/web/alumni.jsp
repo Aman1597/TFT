@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/front1.css">
     <link rel="stylesheet" href="css/alumni.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap" rel="stylesheet">
     <script src="js/alumniSearch.js" rel="javascript" type="text/javascript"></script>
     </head>
     <body>
@@ -51,11 +53,20 @@
             %>
             <div class="column">
               <div class="alu">
-                <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(5)%>" alt="Image Unavailable">
+                <img src="<%=request.getContextPath() + "/AlumniImages/" + rs.getString(6)%>" alt="Image Unavailable">
                 <div class="cont">
                     <h2 class="key"><%=rs.getString(2)%></h2>
                     <h5 class="title t2 key"><%=rs.getString(3)%></h5>
                     <p class="title t1 key">Batch:&nbsp; <%=rs.getInt(4)%></p>
+                    <%
+                        if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
+                    %>
+                    <p class="title t1 key x"><m class="mailIcon">M</m>:&nbsp; NA</p>
+                    <%
+                        }else{
+                    %>
+                    <p class="title t1 key x"><m class="mailIcon">M</m>:&nbsp; <%=rs.getString(5)%></p>
+                    <% } %>
                 </div>
               </div>
             </div>

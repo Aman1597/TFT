@@ -161,9 +161,6 @@
     .grid-container1:nth-child(2n+1){
         background-color: white;
     }
-/*    .grid-item1:nth-child(6n+0) , .grid-item1:nth-child(6n-1) , .grid-item1:nth-child(6n-2){
-        background-color: white;// whitesmoke;//white;
-    }*/
     .grid-item1:nth-child(3n+1){
         place-items: center start;
         padding: 0 3vw 0 2vw; 
