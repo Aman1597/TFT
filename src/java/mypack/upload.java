@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 import javax.servlet.ServletException;
@@ -91,23 +88,26 @@ public class upload extends HttpServlet {
     String description = request.getParameter("description");
     Part p = request.getPart("myfile");
     String filename = p.getSubmittedFileName();
-    Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tftdb","root","");
-    PreparedStatement pss = con.prepareStatement("select * from notes where filename='"+filename+"'");
-    ResultSet rss= pss.executeQuery();
+    DbManager db = new DbManager();
+    String q = "select * from notes where filename='"+filename+"'";
+    ResultSet rss= db.selectQuery(q);
     if(rss.next())
     {
         response.getWriter().print("<script>alert('A file with same filename already exists');window.location.href='adminzone/Manage_Notes.jsp';</script>");
     }
     else
     {
-    InputStream is = p.getInputStream();
-    //String s = getRandomString();
-    File f = new File(request.getRealPath("/notes"), filename);
-    Files.copy(is, f.toPath());
-    PreparedStatement ps = con.prepareStatement("insert into notes(subject,filename,title,description,uploaddate) values('"+subject+"','"+filename+"','"+title+"','"+description+"',curdate())");
-    ps.executeUpdate();
-    response.getWriter().print("<script>alert('Upload Successful');window.location.href='adminzone/Manage_Notes.jsp';</script>");
+        InputStream is = p.getInputStream();
+        //String s = getRandomString();
+        File f = new File(request.getRealPath("/notes"), filename);
+        Files.copy(is, f.toPath());
+        String query = "insert into notes(subject,filename,title,description,uploaddate) values('"+subject+"','"+filename+"','"+title+"','"+description+"',curdate())";
+        if(db.executeNonQuery(query)){
+            response.getWriter().print("<script>alert('Upload Successful');window.location.href='adminzone/Manage_Notes.jsp';</script>");
+        }
+        else{
+            response.getWriter().print("some sql exception occured");
+        }
     }
     } catch (Exception e) {
                 response.getWriter().print("<script>alert('Not Uploaded');window.location.href='adminzone/Manage_Notes.jsp';</script>");

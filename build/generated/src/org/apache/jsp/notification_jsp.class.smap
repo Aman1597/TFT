@@ -1,0 +1,32 @@
+SMAP
+notification_jsp.java
+JSP
+*S JSP
+*F
++ 0 notification.jsp
+notification.jsp
++ 1 metaTags.jsp
+generalComponents/metaTags.jsp
++ 2 head.jsp
+generalComponents/head.jsp
++ 3 navbar.jsp
+generalComponents/navbar.jsp
++ 4 foot.jsp
+generalComponents/foot.jsp
+*L
+5,9:54
+1#1,3:62
+13#0,78:65
+1#2,38:143
+90#0,2:181
+1#3,48:183
+91#0,11:230
+102,7:242
+108,2:249
+110,3:251,3
+113,2:260
+115,3:263
+117,3:266
+1#4,28:269
+119#0,6:296
+*E

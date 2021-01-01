@@ -70,7 +70,7 @@ else
             </form>
             <h1>MANAGE NOTIFICATION<span class="glyphicon glyphicon-arrow-down"></span></h1>
         </div>
-        <div class="row"><input type="search" id="searchBar" onkeyup="searchNotification1()" placeholder="SEARCH"/></div>
+        <div class="row"><input type="search" id="searchBar" onkeyup="searchNotification()" placeholder="SEARCH"/></div>
         <div class="table-outer1">
             <div class="grid-outer1">
                 <div class="grid-container1">
@@ -85,7 +85,7 @@ else
                    while(rs.next())
                    {
                 %>
-                <div class="grid-container1">
+                <div class="grid-container1 tr">
                     <div class="grid-item1 key"><%=rs.getString(2)%></div>
                     <div class="grid-item1 key"><%=rs.getString(3)%></div>
                     <div class="grid-item1"><a href="../codes/deletenotification.jsp?id=<%=rs.getInt(1)%>">Delete</a></div>

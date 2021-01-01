@@ -92,7 +92,7 @@
     <div class="content">
         <h1 id="h0">Notifications</h1>
         <div class="row"><input type="search" id="searchBar" onkeyup="searchNotification()" placeholder="SEARCH"/></div>
-        <table class="table" id="table" style="text-align: center;" border="0" cellspacing="0">
+        <table class="table" style="text-align: center;" border="0" cellspacing="0">
             <tr>
                 <th style="width: 17%;">S.No.</th>
                 <th>NOTIFICATIONS</th>
@@ -106,10 +106,10 @@
                while(rs.next())
                {  
             %>
-            <tr>
-                <td><%=n%></td>
-                <td><%=rs.getString(2)%></td>
-                <td><%=rs.getString(3)%></td>
+            <tr class="tr">
+                <td class="key"><%=n%></td>
+                <td class="key"><%=rs.getString(2)%></td>
+                <td class="key"><%=rs.getString(3)%></td>
             </tr>
             <% 
                n++;

@@ -33,25 +33,4 @@ function searchAlumni(){
             alumniContainer[j].style.display = "";
         }
     }
-}    
- 
- 
-//            var name, branch, batch;
-//            name = mycolumn[i].getElementsByClassName("key")[0];
-//            branch = mycolumn[i].getElementsByClassName("key")[1];
-//            batch = mycolumn[i].getElementsByClassName("key")[2];
-//
-//            var val1, val2, val3;
-//            val1 = name.textContent || name.innerHTML;
-//            val2 = branch.textContent || branch.innerHTML;
-//            if(batch){
-//            val3 = batch.textContent || batch.innerHTML;
-//            }else{ val3 = val1;}
-//            
-//            if((val1.toUpperCase().indexOf(filter) > -1)||(val2.toUpperCase().indexOf(filter) > -1)||(val3.toUpperCase().indexOf(filter) > -1)){
-//                mycolumn[i].style.display = "";
-//                c++;
-//            }else{
-//                mycolumn[i].style.display = "none";
-//            } 
-   
+}   
