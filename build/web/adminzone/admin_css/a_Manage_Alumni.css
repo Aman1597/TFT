@@ -1,0 +1,102 @@
+    body{
+        grid-template-rows: 10vh 90vh auto;
+    }
+    .form-outer{
+        grid-template-rows: 20% 65% 15%;
+    }
+    .grid-outer{
+        padding: 0 0 14% 0;
+    }
+    .grid-container{
+        padding: 2% 2% 3% 2%;
+    }
+    .grid-item input[type="text"]{
+        text-transform: capitalize;
+    }
+    .grid-item input[type="email"]{
+        text-transform: none;
+    }
+    .grid-item input[type="file"]{
+        border:none;
+        font-size: 1.8rem;
+    }
+    .btn1{
+        padding: 5.5% 0 4% 0;
+    }
+    .grid-container1{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 2%;
+        margin: 0 3% 1% 3%;
+        padding: 0 2% 3.2% 2%;
+        background-color: white;
+        box-shadow: 0 10px 15px 5px grey;
+    }
+    .grid-item2{
+        display: grid;
+        place-items:center;
+        background-color: white;
+        margin-top: 8%;
+        box-shadow: 0 10px 15px 0px grey;
+    }
+    .grid-item2:hover{
+        box-shadow: 0 20px 30px 10px grey;
+    }
+    .grid-item2 img{
+        height: 30em;
+        width: 30em;
+        margin: 4% 0 2% 0;
+    }
+    .batchNo
+    {
+        margin: 3% 3% 1% 3%;
+        display: grid;
+        grid-template-columns: 225px 0% auto;
+        background-color: white;
+        box-shadow: -5px 5px 13px 0px grey;
+    }
+    #div1
+    {
+        height: 6vh; 
+        line-height: 6vh;
+        text-align: center;
+        background-color: grey;// whitesmoke;
+        color: white;// whitesmoke;//grey;
+        font-weight: bold;
+        font-size: 2.4rem;
+    }
+    #triangle{
+        height: 0px;
+        border-top: 3vh solid transparent;
+        border-right: 0px solid transparent;
+        border-bottom: 3vh solid transparent;
+        border-left: 6vh solid grey;// whitesmoke;
+        border-left: collapse;
+    }
+    @media screen and (max-width: 650px){
+        .grid-container1{
+            grid-template-columns: 1fr !important;// auto !important;
+            padding-bottom: 6% !important;
+        }
+    }
+    @media screen and (max-width: 1050px){
+        .grid-container1{
+            grid-template-columns: 1fr 1fr;
+            padding: 0 3% 4% 3%;
+            grid-column-gap: 3%;
+        }
+    }
+    body .row{
+        margin: 5vh 0 3vh 0;
+    }
+    .grid-item2 .mailIcon{
+        //font-weight:  bold;
+        //font-size: 2rem;
+        //font-family: fantasy;
+        font-family: 'Goldman', cursive;//inherit;//sans-serif;
+        background-image: linear-gradient(225deg, #FFE53B, #FF2525, #21D4FD, #B721FF);//, #21D4FD, #B721FF);
+        //text-shadow: -2px 2px 2px ;
+        //font-stretch: condensed;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }

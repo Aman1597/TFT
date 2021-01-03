@@ -24,32 +24,7 @@ else
         <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
-        <style>
-            body{
-                grid-template-rows: 10vh 90vh auto;
-            }
-            .form-outer{
-                grid-template-rows: 20% 65% 15%;
-            }
-            .grid-outer{
-                padding: 3% 0 17.5% 0;
-            }
-            .grid-container{
-                grid-template-columns: 100% ;
-                grid-gap: 2%;
-            }
-            
-            .grid-item:nth-child(even){
-                place-items:center;
-            }
-            .grid-item input{
-                text-transform: none;
-            }
-            .btn1{
-                grid-column: 1;
-                padding: 0 0 5% 0;
-            }
-        </style>
+        <link href="admin_css/a_notification.css" rel="stylesheet" type="text/css"/>
         <script src="../js/notificationSearch.js" type="text/javascript"></script>
     </head>
     <body>
@@ -59,8 +34,8 @@ else
             <h1>UPLOAD NOTIFICATION</h1>
             <form action="../codes/uploadnotificationcode.jsp" method="post" class="grid-outer">
                 <div class="grid-container">
-                    <div class="grid-item" style="padding-top: 2%;">Enter Notification Text:</div>  
-                    <div class="grid-item" style="align-items:start;padding-top: 2%;">
+                    <div class="grid-item">Enter Notification Text:</div>  
+                    <div class="grid-item">
                         <input type="text" name="notificationtext" required=""/>
                     </div>
                     <div class="grid-item btn1"><input type="submit" value="Upload" /></div>

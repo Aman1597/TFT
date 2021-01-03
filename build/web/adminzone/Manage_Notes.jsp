@@ -27,50 +27,8 @@ else
         <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <style>
-            body{
-                grid-template-rows: 10vh 90vh 10vh 10vh auto;
-            }
-            .form-outer{
-                grid-template-rows: 16.5% 68.5% 15%;//85%;
-                grid-template-columns: 34%;
-            }
-            .grid-outer{
-                padding: 0 0 8% 0;
-            }
-            .btn1{
-                padding: 5% 0 3% 0;
-            }
-            .grid-item textarea{
-                height:60%;
-            }
-            .grid-item textarea:focus{
-                border: 0.5px solid white;
-            }
-            .grid-item input[type="file"]{
-                border:none;
-                font-size: 1.8rem;
-            }
-            
-            .select{
-                width: inherit;
-                text-align: center;
-            }
-            .select select{
-                font-family: serif;
-                background:rgba(8, 36, 69, 0.98);
-                font-size: 1.8rem;
-                padding: 0 1% 0 1%;
-                height: 70%;
-                width: 20%;
-                border: none;
-            }
-            @media screen and (max-width: 1050px) {
-                .form-outer {
-                    grid-template-columns: 60%;
-                }
-            }
-        </style>
+        <link href="admin_css/a_Manage_Notes.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/a_Manage_Notes.js" type="text/javascript"></script>
         
     </head>
     <body>
@@ -94,9 +52,7 @@ else
                     <div class="grid-item">Subject:</div>
                     <div class="grid-item">
                         <select id="sub" name="subject" required="">
-                            
                             <option value="">Select Subject</option>
-                            
                         </select>
                     </div>
                     <div class="grid-item">Title:</div>  
@@ -149,42 +105,6 @@ else
                 </tr>
             </thead>
         </table>
-        <script>
-            function getSub1(dept){
-                $.ajax({
-
-                    url: 'ResponseSub.jsp',
-                    type: 'POST',
-                    data: { datapost : dept},
-                    success: function(result){
-                        $('#sub').html(result);
-                    }
-                });
-            }
-            function getSub2(dept){
-                $.ajax({
-
-                    url: 'ResponseSub.jsp',
-                    type: 'POST',
-                    data: { datapost : dept},
-                    success: function(result){
-                        $('#sub2').html(result);
-                    }
-                });
-            }
-            function getNotes(sub){
-                $.ajax({
-
-                    url: 'ResponseNotes.jsp',
-                    type: 'POST',
-                    data: { datapost : sub},
-                    success: function(result){
-                        $('#gr1').html(result);
-                    }
-                });
-            }
-        </script>
-        
         
     </body>
 </html>

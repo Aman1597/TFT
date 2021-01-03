@@ -1,0 +1,30 @@
+    body{
+        grid-template-rows: 10vh 90vh auto;
+    }
+    .form-outer{
+        grid-template-rows: 20% 65% 15%;
+    }
+    .grid-outer{
+        padding: 3% 0 17.5% 0;
+    }
+    .grid-container{
+        grid-template-columns: 100% ;
+        grid-gap: 2%;
+    }
+    
+    .grid-item{
+        padding-top: 2%;
+    }
+
+    .grid-item:nth-child(even){
+        place-items:center;
+        padding-top: 2%;
+        align-items:start;
+    }
+    .grid-item input{
+        text-transform: none;
+    }
+    .btn1{
+        grid-column: 1;
+        padding: 0 0 5% 0;
+    }
