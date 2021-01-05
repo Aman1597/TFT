@@ -61,7 +61,7 @@
                     <%
                         if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
                     %>
-                    <p class="title t1 key x"><m class="mailIcon">M</m>:&nbsp; NA</p>
+                    <p class="title t1 key x"><m class="mailIcon">&#9993;M</m>:&nbsp; NA</p>
                     <%
                         }else{
                     %>
