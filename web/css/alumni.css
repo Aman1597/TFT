@@ -119,6 +119,11 @@ html {
     
     width: 50vw;//calc(100vw - 7rem);
 }
+@media screen and (max-width: 600px){
+    body .row input[type="search"]{
+        font-size: 2vw;
+    }
+}
 p{
     margin-bottom: 0.25rem;
 }
@@ -126,7 +131,9 @@ p{
     margin-bottom: 1.2rem;
 }
 .mailIcon{
-    font-family: 'Goldman', cursive;//inherit;//sans-serif;
+    font-family: 'Goldman', cursive;
+    //font-size: 1.5rem;
+    font-weight: 900;
     background-image: linear-gradient(225deg, #FFE53B, #FF2525, #21D4FD, #B721FF);//, #21D4FD, #B721FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -21,8 +21,7 @@ else
     <head>
         <%@include file="../generalComponents/metaTags.jsp" %>
         <title>MANAGE NOTIFICATION</title>
-        <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+        <%@include file="../Bootstrap/Bootstrap_Links.jsp" %>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
         <link href="admin_css/a_notification.css" rel="stylesheet" type="text/css"/>
         <script src="../js/notificationSearch.js" type="text/javascript"></script>

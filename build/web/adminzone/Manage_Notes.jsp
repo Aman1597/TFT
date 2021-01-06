@@ -22,9 +22,7 @@ else
     <head>
         <%@include file="../generalComponents/metaTags.jsp" %>
         <title>MANAGE NOTES</title>
-        <script src="../Bootstrap/js/bootstrap-v4.2.1.min.js" type="text/javascript"></script>
-        <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+        <%@include file="../Bootstrap/Bootstrap_Links.jsp" %>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="admin_css/a_Manage_Notes.css" rel="stylesheet" type="text/css"/>

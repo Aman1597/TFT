@@ -17,8 +17,7 @@ else
     <head>
         <%@include file="../generalComponents/metaTags.jsp" %>
         <title>ADD SUBJECT</title>
-        <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+        <%@include file="../Bootstrap/Bootstrap_Links.jsp" %>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>

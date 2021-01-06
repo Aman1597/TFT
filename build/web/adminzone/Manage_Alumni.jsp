@@ -20,8 +20,7 @@ else
     <head>
         <%@include file="../generalComponents/metaTags.jsp" %>
         <title>MANAGE ALUMNI</title>
-        <link href="../Bootstrap/css/bootstrap-v3.3.7.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../Bootstrap/css/bootstrap-v4.2.1.min.css" rel="stylesheet" type="text/css"/>
+        <%@include file="../Bootstrap/Bootstrap_Links.jsp" %>
         <link href="admin_css/gridForm.css" rel="stylesheet" type="text/css"/>
         <script src="../js/alumniSearch.js" rel="javascript" type="text/javascript"></script>
         <link href="admin_css/a_Manage_Alumni.css" rel="stylesheet" type="text/css"/>
@@ -100,11 +99,11 @@ else
                         <%
                         if(rs.getString(5)== null || rs.getString(5).equalsIgnoreCase("null")){
                         %>
-                        <h3 class="key"><m class="mailIcon">M</m>:&nbsp; NA</h3>
+                        <h3 class="key"><m class="mailIcon">&#9993;</m>:&nbsp; NA</h3>
                         <%
                         }else{
                         %>
-                        <h3 class="key"><m class="mailIcon">M</m>:&nbsp;<%=rs.getString(5)%></h3>
+                        <h3 class="key"><m class="mailIcon">&#9993;</m>:&nbsp;<%=rs.getString(5)%></h3>
                         <% } %>
                         <h3><a href="../codes/deleteAlumni.jsp?filename=<%=rs.getString(6)%>">DELETE</a></h3>
                     </div>
