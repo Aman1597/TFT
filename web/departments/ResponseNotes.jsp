@@ -20,11 +20,11 @@
     while(rs.next())
     {
 %>
-<tr>
-    <td style="text-align: left;padding-left: 3%;"><img src="../image/pdf.png" height="27" width="40"/><%=rs.getString(1)%></td>
-    <td><%=rs.getString(2)%></td>
-    <td><%=rs.getString(3)%></td>
-    <td><%=rs.getString(4)%></td>
+<tr class="tr">
+    <td class="key" style="text-align: left;padding-left: 3%;"><img src="../image/pdf.png" height="27" width="40"/><%=rs.getString(1)%></td>
+    <td class="key"><%=rs.getString(2)%></td>
+    <td class="key"><%=rs.getString(3)%></td>
+    <td class="key"><%=rs.getString(4)%></td>
     <td><a target="_blank" href="<%=request.getContextPath() + "/notes/" + rs.getString(1)%>">Download</a></td>
 </tr>
 <%

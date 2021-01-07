@@ -26,12 +26,11 @@ body {
 
 .gal1{
     /* background: url("image/back.png") no-repeat center center fixed;*/
-      width:100%;
-    overflow:none;
-padding:1em;
-    margin-bottom: 10em;
+    width:100%;
+    padding:1em;
+    margin: 0 auto 10em auto;
     background-color: rgba(8, 36, 69, 0.13);
-    overflow:none;
+    //overflow:none;
 }
 
 .thumb{

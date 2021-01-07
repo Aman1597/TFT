@@ -44,7 +44,7 @@
     }
     body .row input[type="search"]{
         margin: 0 auto;
-        border-radius: 3vw;
+        border-radius: 30px;//3vw;
         outline: none;
         padding: 0 1.5vw;
         font-size: 1.2vw;
@@ -54,10 +54,12 @@
         box-shadow: 0 0 10px grey;
         line-height: calc(6.5vh + 4px);//6.5vh;
         width: 50vw;//calc(100vw - 7rem);
+        font-family: serif;
     }
     
     @media screen and (max-width: 600px){
         body .row input[type="search"]{
             font-size: 2vw;
+            width: 65vw;
         }
     }
