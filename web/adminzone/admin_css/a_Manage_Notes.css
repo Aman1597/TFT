@@ -40,3 +40,7 @@ body{
         grid-template-columns: 60%;
     }
 }
+
+body .row{
+    margin: 4vh 0 8vh 0;
+}

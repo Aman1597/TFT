@@ -109,15 +109,16 @@ html {
     outline: none;
     padding: 0 1.5vw;
     font-size: 1.2vw;
-    padding-bottom: 0.45vh;
-    //margin-left: 4rem;
-    //font-family: inherit !important;
     height: 6.5vh;
     border: none;// 2px solid grey;
     box-shadow: 0 0 10px grey;
-    line-height: calc(6.5vh + 4px);//6.5vh;
-    
     width: 50vw;//calc(100vw - 7rem);
+    font-family: serif;
+    letter-spacing: .5px;
+    //padding-bottom: 0.45vh;
+    //line-height: calc(6.5vh + 4px);//6.5vh;
+    
+    
 }
 @media screen and (max-width: 600px){
     body .row input[type="search"]{

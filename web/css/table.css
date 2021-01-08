@@ -6,9 +6,8 @@ body{
     background-color: whitesmoke;
     margin: 0;
     width: inherit;
-    min-height: 100vh;
     display: grid;
-    grid-template-rows: 15vh 10vh 9.5vh auto;
+    grid-template-rows: 15vh 10vh auto;
     font-family: serif;
 }
 h1{
@@ -54,7 +53,7 @@ h1{
 
 body .row{
     width: 100%;
-    margin: 0;
+    margin: 4vh 0 8vh 0;
 }
 body .row input[type="search"]{
     margin: 0 auto;
@@ -62,12 +61,13 @@ body .row input[type="search"]{
     outline: none;
     padding: 0 1.5vw;
     font-size: 1.2vw;
-    padding-bottom: 0.45vh;
     height: 6.5vh;
     border: none;// 2px solid grey;
     box-shadow: 0 0 10px grey;
-    line-height: calc(6.5vh + 4px);//6.5vh;
     width: 50vw;//calc(100vw - 7rem);
+    letter-spacing: .5px;
+    //padding-bottom: 0.45vh;
+    //line-height: calc(6.5vh + 4px);//6.5vh;
 }
 
 @media screen and (max-width: 600px){
