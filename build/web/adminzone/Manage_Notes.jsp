@@ -96,12 +96,13 @@ else
         <table id="gr1" border="0" cellspacing="0" class="table table-dark ">
             <thead>
                 <tr class="rh">
-                        <th>FILE</th>
-                        <th>TITLE</th>
-                        <th>DESCRIPTION</th>
-                        <th>SUBJECT</th>
-                        <th>DOWNLOAD</th>
-                        <th>DELETE</th>
+                    <th>FILE</th>
+                    <th>TITLE</th>
+                    <th>DESCRIPTION</th>
+                    <th>SUBJECT</th>
+                    <th>DEPARTMENT</th>
+                    <th>DOWNLOAD</th>
+                    <th>DELETE</th>
                 </tr>
             </thead>
         </table>

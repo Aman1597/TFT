@@ -7,6 +7,7 @@
     <th>TITLE</th>
     <th>DESCRIPTION</th>
     <th>SUBJECT</th>
+    <th>DEPARTMENT</th>
     <th>DOWNLOAD</th>
     <th>DELETE</th>
 </tr>
@@ -15,7 +16,7 @@
 <%
     String sub=request.getParameter("datapost");
     DbManager db = new DbManager();
-    String query = "select filename,title,description,subject from notes where subject='"+sub+"'";
+    String query = "select filename,title,description,subject,department from notes where subject='"+sub+"'";
     ResultSet rs= db.selectQuery(query);
 
     while(rs.next())
@@ -27,6 +28,7 @@
     <td class="key"><%=rs.getString(2)%></td>
     <td class="key"><%=rs.getString(3)%></td>
     <td class="key"><%=rs.getString(4)%></td>
+    <td class="key"><%=rs.getString(5)%></td>
     <td><a target="_blank" href="<%=request.getContextPath() + "/notes/" + rs.getString(1)%>">Download</a></td>
     <td><a href="../codes/deletenotes.jsp?filename=<%=rs.getString(1)%>">Delete</a></td>
 </tr>

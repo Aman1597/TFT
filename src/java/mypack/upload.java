@@ -83,6 +83,7 @@ public class upload extends HttpServlet {
             throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     try {
+    String dept = request.getParameter("department");
     String subject = request.getParameter("subject");
     String title = request.getParameter("title").toUpperCase();
     String description = request.getParameter("description");
@@ -101,7 +102,7 @@ public class upload extends HttpServlet {
         //String s = getRandomString();
         File f = new File(request.getRealPath("/notes"), filename);
         Files.copy(is, f.toPath());
-        String query = "insert into notes(subject,filename,title,description,uploaddate) values('"+subject+"','"+filename+"','"+title+"','"+description+"',curdate())";
+        String query = "insert into notes(department,subject,filename,title,description,uploaddate) values('"+dept+"','"+subject+"','"+filename+"','"+title+"','"+description+"',curdate())";
         if(db.executeNonQuery(query)){
             response.getWriter().print("<script>alert('Upload Successful');window.location.href='adminzone/Manage_Notes.jsp';</script>");
         }
