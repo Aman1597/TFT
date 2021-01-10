@@ -21,7 +21,7 @@
     }
     .grid-item input[type="file"]{
         border:none;
-        width: 24.4%;// 52%;
+        width: 60%;
         font-size: 1.8rem;
     }
     .grid-container1{
@@ -52,17 +52,11 @@
         .grid-container1{
             grid-template-columns: auto !important;
         }
-        .grid-item input[type="file"]{
-            width: 60% !important;
-        }
     }
     @media screen and (max-width: 1050px){
         .grid-container1{
             grid-template-columns: auto auto;
             padding: 0 3% 0 3%;
             grid-column-gap: 3%;
-        }
-        .grid-item input[type="file"]{
-            width: 45%;
         }
     }

@@ -100,7 +100,7 @@ else
                     <th>TITLE</th>
                     <th>DESCRIPTION</th>
                     <th>SUBJECT</th>
-                    <th>DEPARTMENT</th>
+                    <th>DEPT.</th>
                     <th>DOWNLOAD</th>
                     <th>DELETE</th>
                 </tr>
