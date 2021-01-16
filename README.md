@@ -60,4 +60,18 @@
       
       4. Select com.mysql.jdbc_5.1.5.jar file and click Open button.
       
-  4. Now just start the WAMP SERVER<br/> then click on TFT folder in NETBEANS IDE<br/> then click the green arrow symbol in the toolbar to run project.
+  4. **Import Database** <br/>
+      1. Start the WAMP SERVER and open the browser
+      2. Type 'localhost' in url then hit Enter key
+      3. Click 'phpmyadmin' <br/>
+          NOTE: Refer this link for step iv to vii <br/>
+          https://www.youtube.com/watch?v=iyuUDghBtZo
+      4. Create database 'tftdb' ( same name as the .sql file in the repository i.e tftdb.sql )
+      5. Then click on import
+      6. Click Browse button for 'Location of the text file' and select tftdb.sql
+      7. Click open then click Go button
+      8. Done!
+      
+  5. Then click on TFT folder in NETBEANS IDE
+  
+  6. Now click the green arrow symbol in the toolbar to run project.
